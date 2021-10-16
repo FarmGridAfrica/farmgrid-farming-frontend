@@ -75,7 +75,9 @@ const Home = () => {
   }, [postReferralSuccess]);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(`farmgrid/referral/${user.referralLink}`);
+    navigator.clipboard.writeText(
+      `https://farmgridportal.web.app/referral/${user.referralLink}`
+    );
 
     toast.success("Copied to clipboard", {
       duration: 4000,
@@ -85,7 +87,7 @@ const Home = () => {
   return (
     <div className="showcase">
       <div className="showcase-form card">
-        <img src="./logo.jpg" alt="farm grid logo"></img>
+        <img src={`/img/referral/logo.jpg`} alt="farm grid logo"></img>
         <h2>FarmGrid Referal</h2>
         <p>Please fill the details below to get a referal link</p>
 
@@ -137,7 +139,11 @@ const Home = () => {
           <div>
             <button type="submit" className="btn">
               {postReferralLoading ? (
-                <img className="loader" src="./loader.gif" alt=""></img>
+                <img
+                  className="loader"
+                  src={"/img/referral/loader.gif"}
+                  alt=""
+                ></img>
               ) : (
                 "Get Refferal"
               )}
