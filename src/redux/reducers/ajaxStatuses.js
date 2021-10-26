@@ -1,4 +1,9 @@
-import { POST_REFERRAL_FAIL, POST_REFERRAL_SUCCESS } from "../types";
+import {
+  GET_REFERRAL_FAIL,
+  GET_REFERRAL_SUCCESS,
+  POST_REFERRAL_FAIL,
+  POST_REFERRAL_SUCCESS,
+} from "../types";
 
 const initialState = {
   errors: {},
@@ -13,6 +18,14 @@ const ajaxStatuses = (state = initialState, { type, payload }) => {
 
     case POST_REFERRAL_SUCCESS:
       state.success.postReferral = payload.message;
+      return { ...state };
+
+    case GET_REFERRAL_FAIL:
+      state.errors.getReferral = payload.errors;
+      return { ...state };
+
+    case GET_REFERRAL_SUCCESS:
+      state.success.getReferral = payload.message;
       return { ...state };
 
     default:

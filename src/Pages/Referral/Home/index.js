@@ -13,9 +13,6 @@ function useQuery() {
 const Home = () => {
   let query = useQuery();
 
-  const [loading, setLoading] = useState(false);
-  const [changeFormState, setChangeFormState] = useState(false);
-
   const { postReferralSuccess, postReferralError, postReferralLoading, user } =
     useSelector((state) => {
       const {
@@ -50,9 +47,7 @@ const Home = () => {
     onSubmit: (prop) => {
       let formData = prop;
 
-      const refId = query.get("refId");
-
-      console.log({ formData, refId });
+      let refId = query.get("refId");
 
       dispatch(postReferralRequest({ formData, refId }));
     },
@@ -85,14 +80,17 @@ const Home = () => {
   };
 
   return (
-    <div className="showcase">
+    <div className="form-background">
       <div className="showcase-form card">
-        <img src={`/img/referral/logo.jpg`} alt="farm grid logo"></img>
-        <h2>FarmGrid Referal</h2>
+        <img src={`/img/referral/logo.png`} alt="farm grid logo"></img>
+        <h2>Referal</h2>
         <p>Please fill the details below to get a referal link</p>
 
         <form onSubmit={formik.handleSubmit}>
           <div className="form-control">
+            <div className="label-div">
+              <label htmlFor="">Wallet Address</label>
+            </div>
             <input
               type="text"
               name="walletAddress"
@@ -102,6 +100,10 @@ const Home = () => {
             />
           </div>
           <div className="form-control">
+            <div className="label-div">
+              <label htmlFor="">Telegram username</label>
+              <a href="">Click to follow</a>
+            </div>
             <input
               type="text"
               name="telegramUsername"
@@ -111,6 +113,10 @@ const Home = () => {
             />
           </div>
           <div className="form-control">
+            <div className="label-div">
+              <label htmlFor="">Facebook username</label>
+              <a href="">Click to follow</a>
+            </div>
             <input
               type="text"
               name="facebookUsername"
@@ -119,7 +125,13 @@ const Home = () => {
               required
             />
           </div>
+
           <div className="form-control">
+            <div className="label-div">
+              <label htmlFor="">Twitter username</label>
+              <a href="">Click to follow</a>
+            </div>
+
             <input
               type="text"
               name="twitterUsername"
@@ -128,6 +140,10 @@ const Home = () => {
             />
           </div>
           <div className="form-control">
+            <div className="label-div">
+              <label htmlFor="">Instagram username</label>
+              <a href="">Click to follow</a>
+            </div>
             <input
               type="text"
               name="instagramUsername"
@@ -148,18 +164,45 @@ const Home = () => {
                 "Get Refferal"
               )}
             </button>
+            <div className="referral-count">
+              <Link to="/referral/getreferral">
+                Forgot referral link? Click to get
+              </Link>
+              <Link to="/referral/getreferral">View referal count</Link>
+            </div>
           </div>
         </form>
 
-        <div className="copy-section">
-          <p>Please click to copy your referral link below</p>
-          <input
-            value={`farmgrid/referral/${user.referralLink}`}
-            onClick={() => copyToClipboard()}
-            action={formik.handleSubmit}
-            type="text"
-            required
-          />
+        {user.referralLink && (
+          <div className="copy-section card">
+            <p>Your referral link</p>
+            <div>
+              <input
+                value={`https://farmgridportal.web.app/referral/${user.referralLink}`}
+                action={formik.handleSubmit}
+                type="text"
+                required
+              />
+              <div onClick={() => copyToClipboard()} className="copy-button">
+                Copy
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="our-community">
+          <h2>JOIN OUR COMMUNITY</h2>
+          <p>
+            Keep up-to-date and find out how you can get involved in all our
+            social media channels. Follow, like and share!
+          </p>
+          <div className="icon">
+            <img src="/img/referral/facebook.png" alt="" />
+            <img src="/img/referral/twitter.png" alt="" />
+            <img src="/img/referral/instagram.png" alt="" />
+            <img src="/img/referral/telegram.png" alt="" />
+            <img src="/img/referral/medium.png" alt="" />
+          </div>
         </div>
       </div>
     </div>

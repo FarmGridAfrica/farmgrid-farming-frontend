@@ -1,7 +1,8 @@
-import { POST_REFERRAL_LOADING } from "../types";
+import { GET_REFERRAL_LOADING, POST_REFERRAL_LOADING } from "../types";
 
 const initialState = {
   postReferralLoading: false,
+  getReferralLoading: false,
 };
 
 const loadingIndicator = (state = initialState, { type, payload }) => {
@@ -10,6 +11,12 @@ const loadingIndicator = (state = initialState, { type, payload }) => {
       return {
         ...state,
         postReferralLoading: payload,
+      };
+
+    case GET_REFERRAL_LOADING:
+      return {
+        ...state,
+        getReferralLoading: payload,
       };
 
     default:

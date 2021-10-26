@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+:root {
+  --primary-color: #047aed;
+  --secondary-color: #1c3fa8;
+  --dark-color: #002240;
+  --light-color: #f4f4f4;
+  --success-color: #318831;
+  --danger-color: #d9534f;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.btn .loader {
+  width: 20px;
+  height: auto;
+}
+
+.errordata {
+  color: var(--danger-color);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-background {
+  background-color: #e7ffdf;
+  height: 1100px;
+  margin-bottom: 30px;
+  overflow-y: scroll; /* Add the ability to scroll */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.form-background::-webkit-scrollbar {
+  display: none;
+}
+
+.btn {
+  cursor: pointer;
+  background: $primary;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 45px;
+}
+
+.showcase-form {
+  position: relative;
+  top: 10px;
+  height: auto;
+  width: 500px;
+  padding: 10px 50px;
+  z-index: 100;
+  margin: 0px auto;
+  top: 50px;
+  overflow: auto;
+  scroll-snap-type: none;
+}
+
+.showcase .showcase-form .copy-section {
+  margin-top: 50px;
+}
+
+.showcase-form h2,
+p {
+  text-align: center;
+  font-size: 14px;
+}
+.showcase-form p {
+  margin: 40px auto 20px;
+  font-size: 14px;
+  color: #444444;
+}
+.showcase-form h2 {
+  margin: -15px auto;
+}
+
+.showcase-form .form-control {
+  margin: 20px 0;
+}
+
+.showcase-form img {
+  max-width: 127px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.showcase-form input[type="text"],
+.showcase-form input[type="email"] {
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.showcase-form input:focus {
+  outline: none;
+}
+
+.label-div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1px;
+
+  label,
+  a {
+    font-size: 14px;
+  }
+
+  a {
+    align-self: end;
+    justify-self: end;
+  }
+}
+
+.copy-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  border-radius: 10px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+
+  p {
+    margin: 0;
+  }
+
+  div {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+
+    input[type="text"] {
+      overflow: hidden;
+      border-radius: 0px;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+      height: 35px;
+    }
+
+    .copy-button {
+      background-color: $primary;
+      height: 35px;
+      color: $light;
+      text-align: center;
+      padding-left: 15px;
+      border-radius: 20px;
+      margin-left: -20px;
+      z-index: 1;
+    }
+  }
+}
+
+.our-community {
+  h3 {
+    font-weight: bold;
+    margin: 20px auto 10px;
+  }
+  h2,
+  p {
+    margin: 0px;
+  }
+
+  h2 {
+    color: $primary;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    margin: 10px auto;
+  }
+
+  .icon {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    img {
+      cursor: pointer;
+    }
+  }
+}
+
+.referral-count {
+  margin-top: 5px;
+  a {
+    display: block;
+  }
+}
+
+/* .showcase-form {
+  animation: slideinFromLeft 2s ease-in-out;
+} */
+
+@keyframes slideinFromLeft {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/*  Mobile */
+@media (max-width: 500px) {
+  .showcase-form {
+    position: relative;
+    top: 10px;
+    height: auto;
+    width: 340px;
+    padding: 10px 20px;
+    z-index: 100;
+    margin: 0px auto;
+    top: 50px;
+    overflow: auto;
+    scroll-snap-type: none;
+  }
+
+  .showcase-form input[type="text"],
+  .showcase-form input[type="email"] {
+    padding: 3px;
+    font-size: 14px;
+  }
+}

@@ -3,6 +3,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import "./referral.css";
 
+// scss import
+import "./sass/App.scss";
+
 // Redux
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store";

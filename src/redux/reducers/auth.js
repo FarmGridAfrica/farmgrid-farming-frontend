@@ -1,4 +1,4 @@
-import { POST_REFERRAL_SUCCESS } from "../types";
+import { GET_REFERRAL_SUCCESS, POST_REFERRAL_SUCCESS } from "../types";
 
 const initialState = () => ({
   user: {},
@@ -19,6 +19,11 @@ const authReducer = (state = initialState(), { type, payload }) => {
     //   };
 
     case POST_REFERRAL_SUCCESS:
+      return {
+        ...state,
+        user: payload.user,
+      };
+    case GET_REFERRAL_SUCCESS:
       return {
         ...state,
         user: payload.user,
