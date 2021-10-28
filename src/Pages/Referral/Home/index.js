@@ -3,14 +3,43 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { postReferralRequest } from "../../../redux/action";
+import Walletmodel from "../../../models/WalletModels";
+import { Icons } from "../../../Components/Icons";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
 const Home = () => {
+  const { getweb3 } = Walletmodel();
+  const [myWeb3, setMyWeb3] = useState();
+  const [loading, setLoading] = useState(false);
+
+  const connectWallet = async () => {
+    setLoading(true);
+
+    try {
+      const response = await getweb3();
+
+      setMyWeb3(response);
+
+      const result = await response.eth.getAccounts();
+
+      formik.setFieldValue("walletAddress", result[0]);
+
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+  // disconnect wallet
+  const disconnectWallet = async () => {
+    formik.setFieldValue("walletAddress", "");
+  };
+
   let query = useQuery();
 
   const { postReferralSuccess, postReferralError, postReferralLoading, user } =
@@ -89,7 +118,39 @@ const Home = () => {
         <form onSubmit={formik.handleSubmit}>
           <div className="form-control">
             <div className="label-div">
-              <label htmlFor="">Wallet Address</label>
+              <label>Wallet Address</label>
+
+              {formik.values.walletAddress ? (
+                <div
+                  className="connect-wallet-btn"
+                  onClick={() => disconnectWallet()}
+                >
+                  {loading ? (
+                    <img
+                      className="loader"
+                      src={"/img/referral/loader.gif"}
+                      alt=""
+                    ></img>
+                  ) : (
+                    "Disconnect"
+                  )}
+                </div>
+              ) : (
+                <div
+                  className="connect-wallet-btn"
+                  onClick={() => connectWallet()}
+                >
+                  {loading ? (
+                    <img
+                      className="loader"
+                      src={"/img/referral/loader.gif"}
+                      alt=""
+                    ></img>
+                  ) : (
+                    "Connect Wallet"
+                  )}
+                </div>
+              )}
             </div>
             <input
               type="text"
@@ -101,8 +162,10 @@ const Home = () => {
           </div>
           <div className="form-control">
             <div className="label-div">
-              <label htmlFor="">Telegram username</label>
-              <a href="">Click to follow</a>
+              <label>Telegram username</label>
+              <a href="https://t.me/farmgrid" target="_blank">
+                Click to follow
+              </a>
             </div>
             <input
               type="text"
@@ -114,8 +177,10 @@ const Home = () => {
           </div>
           <div className="form-control">
             <div className="label-div">
-              <label htmlFor="">Facebook username</label>
-              <a href="">Click to follow</a>
+              <label>Facebook username</label>
+              <a href="https://web.facebook.com/farmgrid" target="_blank">
+                Click to follow
+              </a>
             </div>
             <input
               type="text"
@@ -128,8 +193,10 @@ const Home = () => {
 
           <div className="form-control">
             <div className="label-div">
-              <label htmlFor="">Twitter username</label>
-              <a href="">Click to follow</a>
+              <label>Twitter username</label>
+              <a href="https://twitter.com/farmgrid" target="_blank">
+                Click to follow
+              </a>
             </div>
 
             <input
@@ -141,8 +208,10 @@ const Home = () => {
           </div>
           <div className="form-control">
             <div className="label-div">
-              <label htmlFor="">Instagram username</label>
-              <a href="">Click to follow</a>
+              <label>Instagram username</label>
+              <a href="https://instagram.com/farmgrid" target="_blank">
+                Click to follow
+              </a>
             </div>
             <input
               type="text"
@@ -190,20 +259,7 @@ const Home = () => {
           </div>
         )}
 
-        <div className="our-community">
-          <h2>JOIN OUR COMMUNITY</h2>
-          <p>
-            Keep up-to-date and find out how you can get involved in all our
-            social media channels. Follow, like and share!
-          </p>
-          <div className="icon">
-            <img src="/img/referral/facebook.png" alt="" />
-            <img src="/img/referral/twitter.png" alt="" />
-            <img src="/img/referral/instagram.png" alt="" />
-            <img src="/img/referral/telegram.png" alt="" />
-            <img src="/img/referral/medium.png" alt="" />
-          </div>
-        </div>
+        <Icons />
       </div>
     </div>
   );

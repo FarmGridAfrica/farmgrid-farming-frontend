@@ -3,6 +3,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import "./referral.css";
 
+//hooks
+import ScrollToTheTop from "./hooks/ScrollToTheTop";
+
 // scss import
 import "./sass/App.scss";
 
@@ -18,6 +21,7 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <Alert />
         <Router>
+          <ScrollToTheTop />
           <Pages />
         </Router>
       </PersistGate>

@@ -5,8 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
 import { getReferralRequest } from "../../../redux/action";
+import Walletmodel from "../../../models/WalletModels";
+import { Icons } from "../../../Components/Icons";
 
 const ViewReferral = () => {
+  const { getweb3 } = Walletmodel();
+  const [myWeb3, setMyWeb3] = useState();
+  const [loading, setLoading] = useState(false);
+
   const { getReferralSuccess, getReferralError, getReferralLoading, user } =
     useSelector((state) => {
       const {
@@ -57,6 +63,29 @@ const ViewReferral = () => {
     });
   };
 
+  const connectWallet = async () => {
+    setLoading(true);
+
+    try {
+      const response = await getweb3();
+
+      setMyWeb3(response);
+
+      const result = await response.eth.getAccounts();
+
+      formik.setFieldValue("walletAddress", result[0]);
+
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+  // disconnect wallet
+  const disconnectWallet = async () => {
+    formik.setFieldValue("walletAddress", "");
+  };
+
   return (
     <div className="form-background">
       <div className="showcase-form card">
@@ -68,6 +97,37 @@ const ViewReferral = () => {
           <div className="form-control">
             <div className="label-div">
               <label htmlFor="">Wallet Address</label>
+              {formik.values.walletAddress ? (
+                <div
+                  className="connect-wallet-btn"
+                  onClick={() => disconnectWallet()}
+                >
+                  {loading ? (
+                    <img
+                      className="loader"
+                      src={"/img/referral/loader.gif"}
+                      alt=""
+                    ></img>
+                  ) : (
+                    "Disconnect"
+                  )}
+                </div>
+              ) : (
+                <div
+                  className="connect-wallet-btn"
+                  onClick={() => connectWallet()}
+                >
+                  {loading ? (
+                    <img
+                      className="loader"
+                      src={"/img/referral/loader.gif"}
+                      alt=""
+                    ></img>
+                  ) : (
+                    "Connect Wallet"
+                  )}
+                </div>
+              )}
             </div>
             <input
               type="text"
@@ -113,21 +173,7 @@ const ViewReferral = () => {
           </div>
         )}
 
-        <div className="our-community">
-          {user.referralCount && <h3>Total Referrals: {user.referralCount}</h3>}
-          <h2>JOIN OUR COMMUNITY</h2>
-          <p>
-            Keep up-to-date and find out how you can get involved in all our
-            social media channels. Follow, like and share!
-          </p>
-          <div className="icon">
-            <img src="/img/referral/facebook.png" alt="" />
-            <img src="/img/referral/twitter.png" alt="" />
-            <img src="/img/referral/instagram.png" alt="" />
-            <img src="/img/referral/telegram.png" alt="" />
-            <img src="/img/referral/medium.png" alt="" />
-          </div>
-        </div>
+        <Icons />
       </div>
     </div>
   );

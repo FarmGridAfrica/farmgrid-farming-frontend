@@ -64,7 +64,6 @@ body {
   height: auto;
   width: 500px;
   padding: 10px 50px;
-  z-index: 100;
   margin: 0px auto;
   top: 50px;
   overflow: auto;
@@ -120,14 +119,33 @@ p {
   grid-template-columns: 1fr 1fr;
   margin-bottom: 1px;
 
+  .connect-wallet-btn {
+    background-color: $primary;
+    color: $light;
+    border-radius: 20px;
+    text-align: end;
+    padding: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-left: auto;
+    font-size: 14px;
+    cursor: pointer;
+    font-size: bold;
+
+    img {
+      width: 20px;
+      height: auto;
+    }
+  }
+
   label,
   a {
     font-size: 14px;
+    align-self: end;
   }
 
   a {
-    align-self: end;
-    justify-self: end;
+    text-align: end;
   }
 }
 
@@ -193,12 +211,18 @@ p {
   }
 
   .icon {
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 20px auto;
+
+    a {
+      align-self: start;
+      justify-self: start;
+    }
 
     img {
-      cursor: pointer;
+      height: 38px;
+      text-align: start;
     }
   }
 }
@@ -226,13 +250,21 @@ p {
 
 /*  Mobile */
 @media (max-width: 500px) {
+  .form-background {
+    background-color: #e7ffdf;
+    height: 1200px;
+    margin-bottom: 30px;
+    overflow-y: scroll; /* Add the ability to scroll */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
   .showcase-form {
     position: relative;
     top: 10px;
     height: auto;
     width: 340px;
     padding: 10px 20px;
-    z-index: 100;
     margin: 0px auto;
     top: 50px;
     overflow: auto;
@@ -243,5 +275,31 @@ p {
   .showcase-form input[type="email"] {
     padding: 3px;
     font-size: 14px;
+  }
+
+  .label-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 1px;
+
+    label,
+    a {
+      font-size: 12px;
+    }
+
+    a {
+      text-align: end;
+    }
+  }
+
+  .copy-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: center;
+    border-radius: 10px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px;
   }
 }
