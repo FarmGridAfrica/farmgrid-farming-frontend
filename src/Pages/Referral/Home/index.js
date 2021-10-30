@@ -218,7 +218,7 @@ const Home = () => {
               name="instagramUsername"
               {...formik.getFieldProps("instagramUsername")}
               placeholder="instagram username"
-            />
+            />``
           </div>
 
           <div>

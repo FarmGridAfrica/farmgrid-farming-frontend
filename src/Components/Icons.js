@@ -1,6 +1,7 @@
 import React from "react";
-
 import { SocialMediaIconsReact } from "social-media-icons-react";
+import { FaTelegram } from "react-icons/fa";
+import { SiMedium } from "react-icons/si";
 
 export const Icons = () => {
   return (
@@ -47,11 +48,9 @@ export const Icons = () => {
           url="https://www.reddit.com/u/Farm_Grid"
           size="38"
         />
-        <a href="https://medium.com/@grid.farmgrid">
-          <img src={"/img/referral/medium.png"} alt=""></img>
-        </a>
+
         <a href="https://t.me/farmgrid">
-          <img src={"/img/referral/telegram.png"} alt=""></img>
+          <FaTelegram className="react-icon" />
         </a>
 
         <SocialMediaIconsReact
@@ -63,6 +62,9 @@ export const Icons = () => {
           url="https://www.youtube.com/channel/UCIoPcYfOHV1rHtoNhi5zNmA"
           size="38"
         />
+        <a href="https://medium.com/@grid.farmgrid">
+          <SiMedium className="react-icon" />
+        </a>
       </div>
     </div>
   );

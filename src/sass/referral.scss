@@ -123,14 +123,10 @@ p {
     background-color: $primary;
     color: $light;
     border-radius: 20px;
-    text-align: end;
-    padding: 5px;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding: 5px 20px;
     margin-left: auto;
     font-size: 14px;
     cursor: pointer;
-    font-size: bold;
 
     img {
       width: 20px;
@@ -220,6 +216,11 @@ p {
       justify-self: start;
     }
 
+    .react-icon {
+      color: #212529;
+      font-size: 40px;
+    }
+
     img {
       height: 38px;
       text-align: start;
@@ -281,6 +282,18 @@ p {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 1px;
+
+    .connect-wallet-btn {
+      background-color: $primary;
+      color: $light;
+      border-radius: 20px;
+      padding: 5px 20px;
+      margin-left: none;
+      width: 150px;
+      font-size: 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
 
     label,
     a {
