@@ -1,4 +1,6 @@
 import {
+  CLEAR_GET_REFERRAL_SUCCESS,
+  CLEAR_POST_REFERRAL_SUCCESS,
   GET_REFERRAL_FAIL,
   GET_REFERRAL_LOADING,
   GET_REFERRAL_REQUEST,
@@ -19,6 +21,13 @@ export const postReferralRequest = (prop) => {
 export const postReferralSuccess = (prop) => {
   return {
     type: POST_REFERRAL_SUCCESS,
+    payload: prop,
+  };
+};
+
+export const clearPostReferralSuccess = (prop) => {
+  return {
+    type: CLEAR_POST_REFERRAL_SUCCESS,
     payload: prop,
   };
 };
@@ -47,6 +56,13 @@ export const getReferralRequest = (prop) => {
 export const getReferralSuccess = (prop) => {
   return {
     type: GET_REFERRAL_SUCCESS,
+    payload: prop,
+  };
+};
+
+export const cleaGetReferralSuccess = (prop) => {
+  return {
+    type: CLEAR_GET_REFERRAL_SUCCESS,
     payload: prop,
   };
 };

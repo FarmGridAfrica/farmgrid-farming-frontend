@@ -4,9 +4,12 @@ import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { Link, useLocation } from "react-router-dom";
-import { postReferralRequest } from "../../../redux/action";
+import {
+  clearPostReferralSuccess,
+  postReferralRequest,
+} from "../../../redux/action";
 import Walletmodel from "../../../models/WalletModels";
-import { Icons } from "../../../Components/Icons";
+import { Icons, ReferralLink } from "../../../Components/Icons";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -95,18 +98,10 @@ const Home = () => {
       toast.success(postReferralSuccess, {
         duration: 4000,
       });
+
+      dispatch(clearPostReferralSuccess());
     }
   }, [postReferralSuccess]);
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(
-      `https://farmgridportal.web.app/referral/${user.referralLink}`
-    );
-
-    toast.success("Copied to clipboard", {
-      duration: 4000,
-    });
-  };
 
   return (
     <div className="form-background">
@@ -218,7 +213,7 @@ const Home = () => {
               name="instagramUsername"
               {...formik.getFieldProps("instagramUsername")}
               placeholder="instagram username"
-            />``
+            />
           </div>
 
           <div>
@@ -230,34 +225,17 @@ const Home = () => {
                   alt=""
                 ></img>
               ) : (
-                "Get Refferal"
+                "JOIN AIRDROP"
               )}
             </button>
             <div className="referral-count">
-              <Link to="/referral/getreferral">
-                Forgot referral link? Click to get
-              </Link>
-              <Link to="/referral/getreferral">View referal count</Link>
+              <Link to="/referral/getreferral">View My Referral Link</Link>
+              <Link to="/referral/getreferral">View Referal Count</Link>
             </div>
           </div>
         </form>
 
-        {user.referralLink && (
-          <div className="copy-section card">
-            <p>Your referral link</p>
-            <div>
-              <input
-                value={`https://farmgridportal.web.app/referral/${user.referralLink}`}
-                action={formik.handleSubmit}
-                type="text"
-                required
-              />
-              <div onClick={() => copyToClipboard()} className="copy-button">
-                Copy
-              </div>
-            </div>
-          </div>
-        )}
+        {user.referralLink && <ReferralLink user={user} />}
 
         <Icons />
       </div>

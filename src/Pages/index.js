@@ -6,6 +6,7 @@ const Pages = () => {
   return (
     <Suspense fallback={null}>
       <Switch>
+        <Route exact path="/" component={Referral} />
         <Route path="/referral" component={Referral} />
       </Switch>
     </Suspense>

@@ -2,6 +2,7 @@ import React from "react";
 import { SocialMediaIconsReact } from "social-media-icons-react";
 import { FaTelegram } from "react-icons/fa";
 import { SiMedium } from "react-icons/si";
+import toast from "react-hot-toast";
 
 export const Icons = () => {
   return (
@@ -49,7 +50,7 @@ export const Icons = () => {
           size="38"
         />
 
-        <a href="https://t.me/farmgrid">
+        <a href="https://t.me/farmgrid" target="_blank">
           <FaTelegram className="react-icon" />
         </a>
 
@@ -62,9 +63,38 @@ export const Icons = () => {
           url="https://www.youtube.com/channel/UCIoPcYfOHV1rHtoNhi5zNmA"
           size="38"
         />
-        <a href="https://medium.com/@grid.farmgrid">
+        <a href="https://medium.com/@grid.farmgrid" target="_blank">
           <SiMedium className="react-icon" />
         </a>
+      </div>
+    </div>
+  );
+};
+
+export const ReferralLink = ({ user }) => {
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(
+      `https://airdrop.farmgrid.org/${user.referralLink}`
+    );
+
+    toast.success("Copied to clipboard", {
+      duration: 4000,
+    });
+  };
+
+  return (
+    <div className="copy-section card">
+      <p>Your referral link</p>
+      <div>
+        <input
+          value={`https://airdrop.farmgrid.org/${user.referralLink}`}
+          onChange={() => copyToClipboard()}
+          type="text"
+          required
+        />
+        <div onClick={() => copyToClipboard()} className="copy-button">
+          Copy
+        </div>
       </div>
     </div>
   );

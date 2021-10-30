@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
 import { getReferralRequest } from "../../../redux/action";
 import Walletmodel from "../../../models/WalletModels";
-import { Icons } from "../../../Components/Icons";
+import { Icons, ReferralLink } from "../../../Components/Icons";
 
 const ViewReferral = () => {
   const { getweb3 } = Walletmodel();
@@ -157,20 +157,12 @@ const ViewReferral = () => {
         </form>
 
         {user.referralLink && (
-          <div className="copy-section card">
-            <p>Your referral link</p>
-            <div>
-              <input
-                value={`https://farmgridportal.web.app/referral/${user.referralLink}`}
-                onChange={() => copyToClipboard()}
-                type="text"
-                required
-              />
-              <div onClick={() => copyToClipboard()} className="copy-button">
-                Copy
-              </div>
+          <>
+            <ReferralLink user={user} />
+            <div className="referral-count">
+              <h2>Referral Count: {user.referralCount}</h2>
             </div>
-          </div>
+          </>
         )}
 
         <Icons />

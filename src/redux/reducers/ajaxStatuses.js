@@ -1,4 +1,6 @@
 import {
+  CLEAR_GET_REFERRAL_SUCCESS,
+  CLEAR_POST_REFERRAL_SUCCESS,
   GET_REFERRAL_FAIL,
   GET_REFERRAL_SUCCESS,
   POST_REFERRAL_FAIL,
@@ -17,7 +19,11 @@ const ajaxStatuses = (state = initialState, { type, payload }) => {
       return { ...state };
 
     case POST_REFERRAL_SUCCESS:
-      state.success.postReferral = payload.message;
+      state.success.postReferral = "Joined Airdrop";
+      return { ...state };
+
+    case CLEAR_POST_REFERRAL_SUCCESS:
+      state.success.postReferral = "";
       return { ...state };
 
     case GET_REFERRAL_FAIL:
@@ -26,6 +32,10 @@ const ajaxStatuses = (state = initialState, { type, payload }) => {
 
     case GET_REFERRAL_SUCCESS:
       state.success.getReferral = payload.message;
+      return { ...state };
+
+    case CLEAR_GET_REFERRAL_SUCCESS:
+      state.success.getReferral = "";
       return { ...state };
 
     default:
