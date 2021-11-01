@@ -99,3 +99,21 @@ export const ReferralLink = ({ user }) => {
     </div>
   );
 };
+
+export const Heading = ({ user }) => {
+  return (
+    <>
+      <img src={`/img/referral/logo.png`} alt="farm grid logo"></img>
+      <h2>Referal</h2>
+      <p>
+        13,000,000 $GRID Token Airdropped, refer your friends to participate{" "}
+        <a
+          href="https://medium.com/@grid.farmgrid/farm-grid-referral-airdrop-7dbc6e29a552"
+          target="_blank"
+        >
+          read more
+        </a>
+      </p>
+    </>
+  );
+};

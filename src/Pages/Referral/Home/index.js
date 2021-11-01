@@ -9,7 +9,7 @@ import {
   postReferralRequest,
 } from "../../../redux/action";
 import Walletmodel from "../../../models/WalletModels";
-import { Icons, ReferralLink } from "../../../Components/Icons";
+import { Heading, Icons, ReferralLink } from "../../../Components/Icons";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -106,10 +106,7 @@ const Home = () => {
   return (
     <div className="form-background">
       <div className="showcase-form card">
-        <img src={`/img/referral/logo.png`} alt="farm grid logo"></img>
-        <h2>Referal</h2>
-        <p>Please fill the details below to get a referal link</p>
-
+        <Heading />
         <form onSubmit={formik.handleSubmit}>
           <div className="form-control">
             <div className="label-div">

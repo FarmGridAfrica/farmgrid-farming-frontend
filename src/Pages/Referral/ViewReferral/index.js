@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
 import { getReferralRequest } from "../../../redux/action";
 import Walletmodel from "../../../models/WalletModels";
-import { Icons, ReferralLink } from "../../../Components/Icons";
+import { Heading, Icons, ReferralLink } from "../../../Components/Icons";
 
 const ViewReferral = () => {
   const { getweb3 } = Walletmodel();
@@ -89,9 +89,7 @@ const ViewReferral = () => {
   return (
     <div className="form-background">
       <div className="showcase-form card">
-        <img src={`/img/referral/logo.png`} alt="farm grid logo"></img>
-        <h2>Referal</h2>
-        <p>Please fill the details below to get a referal link</p>
+        <Heading />
 
         <form onSubmit={formik.handleSubmit}>
           <div className="form-control">

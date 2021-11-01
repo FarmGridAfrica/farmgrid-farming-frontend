@@ -122,7 +122,7 @@ p {
   .connect-wallet-btn {
     background-color: $primary;
     color: $light;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 5px 20px;
     margin-left: auto;
     font-size: 14px;
@@ -291,8 +291,8 @@ p {
     .connect-wallet-btn {
       background-color: $primary;
       color: $light;
-      border-radius: 20px;
-      padding: 5px 20px;
+      border-radius: 10px;
+      padding: 5px 20px 5px 28px;
       margin-left: none;
       width: 150px;
       font-size: 12px;
