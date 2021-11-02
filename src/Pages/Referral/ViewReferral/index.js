@@ -145,7 +145,7 @@ const ViewReferral = () => {
                   alt=""
                 ></img>
               ) : (
-                "Get Refferal"
+                "SEND"
               )}
             </button>
             <div className="referral-count">

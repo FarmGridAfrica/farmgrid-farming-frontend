@@ -46,7 +46,7 @@ export const Icons = () => {
           icon="reddit"
           iconColor="rgba(255,255,255,1)"
           backgroundColor="#212529"
-          url="https://www.reddit.com/u/Farm_Grid"
+          url="https://www.reddit.com/u/farmgrid"
           size="38"
         />
 
@@ -63,7 +63,7 @@ export const Icons = () => {
           url="https://www.youtube.com/channel/UCIoPcYfOHV1rHtoNhi5zNmA"
           size="38"
         />
-        <a href="https://medium.com/@grid.farmgrid" target="_blank">
+        <a href="http://farmgrid.medium.com" target="_blank">
           <SiMedium className="react-icon" />
         </a>
       </div>
