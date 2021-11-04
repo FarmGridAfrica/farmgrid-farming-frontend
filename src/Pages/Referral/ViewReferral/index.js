@@ -87,7 +87,7 @@ const ViewReferral = () => {
   };
 
   return (
-    <div className="form-background">
+    <div className="main-background">
       <div className="showcase-form card">
         <Heading />
 

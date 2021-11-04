@@ -1,14 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-:root {
-  --primary-color: #047aed;
-  --secondary-color: #1c3fa8;
-  --dark-color: #002240;
-  --light-color: #f4f4f4;
-  --success-color: #318831;
-  --danger-color: #d9534f;
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -24,19 +15,13 @@ body {
   height: auto;
 }
 
-.errordata {
-  color: var(--danger-color);
-  font-weight: bold;
-  font-size: 18px;
-}
-
 .card {
   background-color: #fff;
-  border-radius: 30px;
+  border-radius: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.form-background {
+.main-background {
   background-color: #e7ffdf;
   height: 1100px;
   margin-bottom: 30px;
@@ -44,7 +29,7 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
-.form-background::-webkit-scrollbar {
+.main-background::-webkit-scrollbar {
   display: none;
 }
 
@@ -62,8 +47,8 @@ body {
   position: relative;
   top: 10px;
   height: auto;
-  width: 500px;
-  padding: 10px 50px;
+  width: 480px;
+  padding: 10px 30px;
   margin: 0px auto;
   top: 50px;
   overflow: auto;
@@ -101,7 +86,8 @@ p {
 }
 
 .showcase-form input[type="text"],
-.showcase-form input[type="email"] {
+.showcase-form input[type="email"],
+.showcase-form input[type="password"] {
   border: 1px solid #c4c4c4;
   border-radius: 10px;
   height: 40px;
@@ -258,7 +244,7 @@ p {
 
 /*  Mobile */
 @media (max-width: 500px) {
-  .form-background {
+  .main-background {
     background-color: #e7ffdf;
     height: 1200px;
     margin-bottom: 30px;

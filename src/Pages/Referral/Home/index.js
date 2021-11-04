@@ -104,7 +104,7 @@ const Home = () => {
   }, [postReferralSuccess]);
 
   return (
-    <div className="form-background">
+    <div className="main-background">
       <div className="showcase-form card">
         <Heading />
         <form onSubmit={formik.handleSubmit}>

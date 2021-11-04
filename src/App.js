@@ -6,7 +6,7 @@ import "./referral.css";
 //hooks
 import ScrollToTheTop from "./hooks/ScrollToTheTop";
 
-// scss import
+// css import
 import "./sass/App.scss";
 
 // Redux
