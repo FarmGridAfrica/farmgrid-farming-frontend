@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const InvestmentCard = () => {
   return (
@@ -13,7 +14,9 @@ export const InvestmentCard = () => {
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, maiores.
       </p>
-      <div className="btn-medium">Invest</div>
+      <Link className="link" to="/plan/id">
+        <div className="btn-medium">Invest</div>
+      </Link>
     </div>
   );
 };

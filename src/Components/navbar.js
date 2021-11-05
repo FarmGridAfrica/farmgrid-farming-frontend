@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -7,13 +8,19 @@ export const Navbar = () => {
         <img src="" alt="" />
         <ul class="nav-menu">
           <li>
-            <a class="nav-links">Home </a>
+            <Link to="/plan" class="nav-links">
+              Home{" "}
+            </Link>
           </li>
           <li>
-            <a class="nav-links">Register</a>
+            <Link to="/auth/register" class="nav-links">
+              Register
+            </Link>
           </li>
           <li>
-            <a class="nav-links">Log in</a>
+            <Link to="/auth/login" class="nav-links">
+              Log in
+            </Link>
           </li>
         </ul>
       </nav>
@@ -32,6 +39,24 @@ export const DashboardNav = () => {
           </li>
           <li>
             <a class="nav-links">My Packages</a>
+          </li>
+          <li>
+            <a class="nav-links">Log out</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  );
+};
+
+export const AdminNav = () => {
+  return (
+    <div className="navbar-section">
+      <nav className="nav-container">
+        <img src="" alt="" />
+        <ul class="nav-menu">
+          <li>
+            <a class="nav-links">Admin</a>
           </li>
           <li>
             <a class="nav-links">Log out</a>

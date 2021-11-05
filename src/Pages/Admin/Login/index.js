@@ -8,7 +8,6 @@ import {
   clearPostReferralSuccess,
   postReferralRequest,
 } from "../../../redux/action";
-import { Navbar } from "../../../Components/navbar";
 
 const Login = () => {
   const { postReferralSuccess, postReferralError, postReferralLoading, user } =
@@ -50,10 +49,9 @@ const Login = () => {
   });
   return (
     <div className="main-background">
-      <Navbar />
       <div className="showcase-form auth-form card">
         <div>
-          <h1 className="auth-form-h1">Log in</h1>
+          <h1 className="auth-form-h1">Admin Log in</h1>
           <form onSubmit={formik.handleSubmit}>
             <div className="form-control">
               <label>Email</label>
@@ -90,13 +88,6 @@ const Login = () => {
               </button>
             </div>
           </form>
-          <h3 className="auth-form-swap">
-            Don't have an account?
-            <Link to="/auth/register" className="account-span">
-              {" "}
-              Register
-            </Link>
-          </h3>
         </div>
       </div>
     </div>

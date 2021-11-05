@@ -1,0 +1,28 @@
+.admin-dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.balance {
+  margin-top: 50px;
+}
+
+.invested-balance {
+  height: 100px;
+  width: 400px;
+  padding: 20px;
+  background-color: $primary-color;
+  color: $light;
+}
+
+.wallet-balance {
+  height: 100px;
+  width: 400px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.withdrawal-form {
+  margin-top: 20px;
+}

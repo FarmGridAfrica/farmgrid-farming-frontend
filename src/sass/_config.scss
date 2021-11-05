@@ -36,6 +36,10 @@ $top-bar-background: #eaeaff;
   }
 }
 
+.link {
+  text-decoration: none;
+}
+
 .btn-medium {
   padding: 5px 0px;
   font-size: 20px;
@@ -63,6 +67,15 @@ $top-bar-background: #eaeaff;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 @media (min-width: 768px) {
   .container {

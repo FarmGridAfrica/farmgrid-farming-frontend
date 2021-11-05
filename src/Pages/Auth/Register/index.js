@@ -112,7 +112,10 @@ const Register = () => {
           </form>
           <h3 className="auth-form-swap">
             Already a user?
-            <span className="account-span"> Log in</span>
+            <Link to="/auth/login" className="account-span">
+              {" "}
+              Log in
+            </Link>
           </h3>
         </div>
       </div>

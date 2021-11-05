@@ -4,6 +4,7 @@ import Referral from "./Referral";
 import Auth from "./Auth";
 import Dashboard from "./Dashboard";
 import Plan from "./Plan";
+import Admin from "./Admin";
 
 const Pages = () => {
   return (
@@ -14,6 +15,7 @@ const Pages = () => {
         <Route path="/auth" component={Auth} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/plan" component={Plan} />
+        <Route path="/admin" component={Admin} />
       </Switch>
     </Suspense>
   );
