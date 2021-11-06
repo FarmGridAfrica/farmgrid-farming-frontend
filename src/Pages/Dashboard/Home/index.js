@@ -7,8 +7,8 @@ const Home = () => {
     <div>
       <DashboardNav />
       <section className="container">
-        <h1 class="invest-heading">Products</h1>
-        <div class="collection">
+        <h1 className="invest-heading">Products</h1>
+        <div className="collection">
           <InvestmentCard />
         </div>
       </section>

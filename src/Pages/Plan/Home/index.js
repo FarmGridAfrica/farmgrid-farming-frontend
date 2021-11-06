@@ -6,9 +6,9 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <section class="invest container">
-        <h1 class="invest-heading">Investment Packages</h1>
-        <div class="collection">
+      <section className="invest container">
+        <h1 className="invest-heading">Investment Packages</h1>
+        <div className="collection">
           <InvestmentCard />
           <InvestmentCard />
           <InvestmentCard />

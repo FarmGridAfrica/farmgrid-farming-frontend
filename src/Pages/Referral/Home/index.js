@@ -105,12 +105,12 @@ const Home = () => {
 
   return (
     <div className="main-background">
-      <div className="showcase-form card">
+      <div className="showcase-form mt-4 card">
         <Heading />
         <form onSubmit={formik.handleSubmit}>
           <div className="form-control">
             <div className="label-div">
-              <label>Wallet Address</label>
+              <label>Wallet Address(BSC)</label>
 
               {formik.values.walletAddress ? (
                 <div
@@ -186,7 +186,7 @@ const Home = () => {
           <div className="form-control">
             <div className="label-div">
               <label>Twitter username</label>
-              <a href="https://twitter.com/farmgrid" target="_blank">
+              <a href="https://twitter.com/FarmGridAfrica" target="_blank">
                 Click to follow
               </a>
             </div>

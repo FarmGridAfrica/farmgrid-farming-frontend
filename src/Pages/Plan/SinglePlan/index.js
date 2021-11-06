@@ -6,8 +6,8 @@ const SinglePlan = () => {
   return (
     <div>
       <Navbar />
-      <section class="invest container">
-        <h1 class="invest-heading">Investment Packages</h1>
+      <section className="invest container">
+        <h1 className="invest-heading">Investment Packages</h1>
         <p className="lead">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
           tempora vitae blanditiis mollitia ut laborum repellendus aspernatur,
@@ -15,8 +15,8 @@ const SinglePlan = () => {
           maxime ratione. Maiores, nam laudantium!
         </p>
 
-        <h1 class="invest-heading">Products</h1>
-        <div class="collection">
+        <h1 className="invest-heading">Products</h1>
+        <div className="collection">
           <ProductCard />
           <ProductCard />
           <ProductCard />

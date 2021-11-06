@@ -6,19 +6,19 @@ export const Navbar = () => {
     <div className="navbar-section">
       <nav className="nav-container">
         <img src="" alt="" />
-        <ul class="nav-menu">
+        <ul className="nav-menu">
           <li>
-            <Link to="/plan" class="nav-links">
+            <Link to="/plan" className="nav-links">
               Home{" "}
             </Link>
           </li>
           <li>
-            <Link to="/auth/register" class="nav-links">
+            <Link to="/auth/register" className="nav-links">
               Register
             </Link>
           </li>
           <li>
-            <Link to="/auth/login" class="nav-links">
+            <Link to="/auth/login" className="nav-links">
               Log in
             </Link>
           </li>
@@ -33,15 +33,15 @@ export const DashboardNav = () => {
     <div className="navbar-section">
       <nav className="nav-container">
         <img src="" alt="" />
-        <ul class="nav-menu">
+        <ul className="nav-menu">
           <li>
-            <a class="nav-links">Packages</a>
+            <a className="nav-links">Packages</a>
           </li>
           <li>
-            <a class="nav-links">My Packages</a>
+            <a className="nav-links">My Packages</a>
           </li>
           <li>
-            <a class="nav-links">Log out</a>
+            <a className="nav-links">Log out</a>
           </li>
         </ul>
       </nav>
@@ -54,12 +54,12 @@ export const AdminNav = () => {
     <div className="navbar-section">
       <nav className="nav-container">
         <img src="" alt="" />
-        <ul class="nav-menu">
+        <ul className="nav-menu">
           <li>
-            <a class="nav-links">Admin</a>
+            <a className="nav-links">Admin</a>
           </li>
           <li>
-            <a class="nav-links">Log out</a>
+            <a className="nav-links">Log out</a>
           </li>
         </ul>
       </nav>

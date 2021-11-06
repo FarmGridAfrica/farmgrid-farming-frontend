@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import "_config";
 
 * {
   box-sizing: border-box;
@@ -45,12 +46,10 @@ body {
 
 .showcase-form {
   position: relative;
-  top: 10px;
   height: auto;
   width: 480px;
   padding: 10px 30px;
   margin: 0px auto;
-  top: 50px;
   overflow: auto;
   scroll-snap-type: none;
 }
@@ -87,7 +86,8 @@ p {
 
 .showcase-form input[type="text"],
 .showcase-form input[type="email"],
-.showcase-form input[type="password"] {
+.showcase-form input[type="password"],
+.showcase-form input[type="number"] {
   border: 1px solid #c4c4c4;
   border-radius: 10px;
   height: 40px;
@@ -169,6 +169,7 @@ p {
       border-radius: 20px;
       margin-left: -20px;
       z-index: 1;
+      cursor: pointer;
     }
   }
 }
@@ -255,12 +256,10 @@ p {
 
   .showcase-form {
     position: relative;
-    top: 10px;
     height: auto;
     width: 340px;
     padding: 10px 20px;
     margin: 0px auto;
-    top: 50px;
     overflow: auto;
     scroll-snap-type: none;
   }

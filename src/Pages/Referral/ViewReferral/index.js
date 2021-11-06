@@ -88,7 +88,7 @@ const ViewReferral = () => {
 
   return (
     <div className="main-background">
-      <div className="showcase-form card">
+      <div className="showcase-form mt-4 card">
         <Heading />
 
         <form onSubmit={formik.handleSubmit}>

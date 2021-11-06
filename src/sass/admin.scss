@@ -1,10 +1,8 @@
+@import "_config";
+
 .admin-dashboard {
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
-
-.balance {
-  margin-top: 50px;
 }
 
 .invested-balance {
@@ -21,8 +19,4 @@
   padding: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
-}
-
-.withdrawal-form {
-  margin-top: 20px;
 }

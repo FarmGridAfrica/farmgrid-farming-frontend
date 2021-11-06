@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export const InvestmentCard = () => {
   return (
-    <div class="card">
-      <div class="sqaure-image">
+    <div className="card">
+      <div className="sqaure-image">
         <img src={"/img/auth/farm.jpg"} />
       </div>
       <div className="grid mt-3">
@@ -23,8 +23,8 @@ export const InvestmentCard = () => {
 
 export const ProductCard = () => {
   return (
-    <div class="card">
-      <div class="sqaure-image">
+    <div className="card">
+      <div className="sqaure-image">
         <img src={"/img/auth/farm.jpg"} />
       </div>
       <div className="grid mt-3">

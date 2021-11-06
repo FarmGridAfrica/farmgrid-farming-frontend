@@ -28,7 +28,7 @@ export const Icons = () => {
           icon="twitter"
           iconColor="rgba(255,255,255,1)"
           backgroundColor="#212529"
-          url="https://twitter.com/farmgrid"
+          url="https://twitter.com/FarmGridAfrica"
           size="38"
         />
         <SocialMediaIconsReact
