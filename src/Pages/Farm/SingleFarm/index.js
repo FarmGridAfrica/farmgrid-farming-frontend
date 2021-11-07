@@ -2,7 +2,7 @@ import React from "react";
 import { InvestmentCard, ProductCard } from "../../../Components/cards";
 import { Navbar } from "../../../Components/navbar";
 
-const SinglePlan = () => {
+const SingleFarm = () => {
   return (
     <div>
       <Navbar />
@@ -29,4 +29,4 @@ const SinglePlan = () => {
   );
 };
 
-export default SinglePlan;
+export default SingleFarm;

@@ -8,7 +8,7 @@ const setupSdk = async () => {
   return await XF(chainID, pk, { env: "local", protocols });
 };
 
-const flexibleInfo = async () => {
+export const flexibleInfo = async () => {
   try {
     const { Personal } = await setupSdk();
     const info = await Personal.flexibleInfo();
@@ -30,7 +30,7 @@ export const getWalletBalance = async () => {
   }
 };
 
-const makeDeposit = async () => {
+export const makeDeposit = async () => {
   try {
     const { Personal } = await setupSdk();
     const result = await Personal.flexibleDeposit("200");

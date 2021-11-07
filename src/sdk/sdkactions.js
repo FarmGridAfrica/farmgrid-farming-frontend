@@ -25,7 +25,6 @@ export const getMyAddress = async (
 ) => {
   try {
     const response = await myAddress();
-    console.log(response);
     setActiveAddress(response);
   } catch (error) {}
 };

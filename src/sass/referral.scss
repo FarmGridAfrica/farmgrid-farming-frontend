@@ -87,13 +87,27 @@ p {
 .showcase-form input[type="text"],
 .showcase-form input[type="email"],
 .showcase-form input[type="password"],
-.showcase-form input[type="number"] {
+.showcase-form input[type="number"],
+.showcase-form input[type="date"] {
   border: 1px solid #c4c4c4;
   border-radius: 10px;
   height: 40px;
   padding-left: 10px;
   font-size: 14px;
   width: 100%;
+}
+
+.showcase-form textarea[type="text"] {
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  height: 120px;
+  padding-left: 10px;
+  resize: none;
+  font-size: 14px;
+  width: 100%;
+}
+.showcase-form textarea:focus {
+  outline: none;
 }
 
 .showcase-form input:focus {

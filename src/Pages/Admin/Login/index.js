@@ -49,7 +49,7 @@ const Login = () => {
   });
   return (
     <div className="main-background">
-      <div className="showcase-form auth-form card">
+      <div className="showcase-form mt-3 auth-form card">
         <div>
           <h1 className="auth-form-h1">Admin Log in</h1>
           <form onSubmit={formik.handleSubmit}>

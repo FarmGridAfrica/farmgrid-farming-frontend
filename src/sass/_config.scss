@@ -201,3 +201,26 @@ h6 {
 .font-22 {
   font-size: 22px;
 }
+
+//display
+
+.display-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+//text-color
+.text-danger {
+  color: red;
+}
+
+//input
+input[type="file"] {
+  display: none;
+}
+
+//Upload
+.upload {
+  height: 150px;
+}

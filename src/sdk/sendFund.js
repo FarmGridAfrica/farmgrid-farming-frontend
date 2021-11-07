@@ -4,7 +4,7 @@ import busdAbi from "./abi.json";
 require("dotenv").config();
 
 const w3 = new web3("http://localhost:8545");
-const busdAddress = "0xa180Fe01B906A1bE37BE6c534a3300785b20d947";
+const busdAddress = "0xe9e7cea3dedca5984780bafc599bd69add087d56";
 const busd = new w3.eth.Contract(busdAbi, busdAddress);
 
 // Values to Change
@@ -37,7 +37,6 @@ export const sendFunds = async (fund, getBalance) => {
 };
 
 function pkToAddress(pk) {
-  console.log(pk);
   const account = w3.eth.accounts.privateKeyToAccount(pk);
   return account.address;
 }

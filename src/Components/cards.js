@@ -14,7 +14,7 @@ export const InvestmentCard = () => {
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, maiores.
       </p>
-      <Link className="link" to="/plan/id">
+      <Link className="link" to="/farm/id">
         <div className="btn-medium">Invest</div>
       </Link>
     </div>

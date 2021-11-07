@@ -8,7 +8,7 @@ export const Navbar = () => {
         <img src="" alt="" />
         <ul className="nav-menu">
           <li>
-            <Link to="/plan" className="nav-links">
+            <Link to="/farm" className="nav-links">
               Home{" "}
             </Link>
           </li>
@@ -57,6 +57,9 @@ export const AdminNav = () => {
         <ul className="nav-menu">
           <li>
             <a className="nav-links">Admin</a>
+          </li>
+          <li>
+            <a className="nav-links">Add Farm</a>
           </li>
           <li>
             <a className="nav-links">Log out</a>

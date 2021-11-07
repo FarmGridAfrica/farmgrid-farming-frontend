@@ -27,15 +27,31 @@ const Dashboard = () => {
     getAccountBalance(setAccountBalance, setAccountBalanceLoading);
     getMyAddress(setActiveAddress, setActiveAddressLoading);
 
+    getInfo();
+
     const activeAddress = await myAddress();
     setActiveAddress(activeAddress);
   }, [getWalletBalance, getMyAddress]);
 
   const fund = async (amountToFund) => {
     await sendFunds(amountToFund, () => {
-      getWalletBalance(setAccountBalance, setAccountBalanceLoading);
+      getAccountBalance(setAccountBalance, setAccountBalanceLoading);
     });
-    // setAmountToFund('0')
+    // setAmountToFund("0");
+  };
+
+  const getInfo = async () => {
+    const x = await flexibleInfo();
+    // if (x && Object.keys(x).length > 0) {
+    // 	setInfo(x)
+    // }
+
+    console.log(x);
+  };
+
+  const makeMyDeposite = async () => {
+    const response = await makeDeposit();
+    console.log(response);
   };
 
   return (
@@ -54,7 +70,7 @@ const Dashboard = () => {
             <h3>{accountBalance} BUSD</h3>
           </div>
 
-          <div className="card invested-balance">
+          <div className="card invested-balance my-1">
             <h3>Total Invested Balance</h3>
             <h3>₦20000</h3>
           </div>
@@ -67,6 +83,8 @@ const Dashboard = () => {
           <FundWalletForm fund={fund} />
           <DepositeForm />
           <WithdrawalForm />
+
+          <div onClick={() => makeMyDeposite()}>make deposite</div>
         </div>
       </div>
       <div className="container">
