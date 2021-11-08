@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getReferralRequest } from "../../../redux/action";
 import Walletmodel from "../../../models/WalletModels";
 import { Heading, Icons, ReferralLink } from "../../../Components/Icons";

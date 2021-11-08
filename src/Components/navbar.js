@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { getFarmsRequest, logout } from "../redux/action";
+import { useDispatch } from "react-redux";
 
 export const Navbar = () => {
   return (
@@ -9,7 +11,7 @@ export const Navbar = () => {
         <ul className="nav-menu">
           <li>
             <Link to="/farm" className="nav-links">
-              Home{" "}
+              Farms{" "}
             </Link>
           </li>
           <li>
@@ -29,19 +31,23 @@ export const Navbar = () => {
 };
 
 export const DashboardNav = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="navbar-section">
       <nav className="nav-container">
         <img src="" alt="" />
         <ul className="nav-menu">
+          <Link to="/farm" className="nav-links">
+            Farms{" "}
+          </Link>
           <li>
-            <a className="nav-links">Packages</a>
+            <a className="nav-links">My Farms</a>
           </li>
           <li>
-            <a className="nav-links">My Packages</a>
-          </li>
-          <li>
-            <a className="nav-links">Log out</a>
+            <a onClick={() => dispatch(logout())} className="nav-links">
+              Log out
+            </a>
           </li>
         </ul>
       </nav>
@@ -50,6 +56,8 @@ export const DashboardNav = () => {
 };
 
 export const AdminNav = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="navbar-section">
       <nav className="nav-container">
@@ -61,9 +69,9 @@ export const AdminNav = () => {
           <li>
             <a className="nav-links">Add Farm</a>
           </li>
-          <li>
-            <a className="nav-links">Log out</a>
-          </li>
+          <a onClick={() => dispatch(logout())} className="nav-links">
+            Log out
+          </a>
         </ul>
       </nav>
     </div>

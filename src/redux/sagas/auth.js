@@ -1,19 +1,31 @@
 import axios from "./axios";
 import { call, put, takeLatest, spawn } from "redux-saga/effects";
 
-import { GET_REFERRAL_REQUEST, POST_REFERRAL_REQUEST } from "../types";
+import {
+  GET_REFERRAL_REQUEST,
+  LOGIN_REQUEST,
+  POST_REFERRAL_REQUEST,
+} from "../types";
 import { clientErrorMessage, delay } from "./reusable";
 
 import {
   getReferralFailure,
   getReferralLoading,
   getReferralSuccess,
+  loginFailure,
+  loginLoading,
+  loginSuccess,
   postReferralFailure,
   postReferralLoading,
   postReferralSuccess,
 } from "../action";
 
 const ajaxDBCalls = {
+  login: async (formData) => {
+    const response = await axios.post(`/auth/login`, formData);
+    return response;
+  },
+
   postReferral: async ({ formData, refId }) => {
     if (refId) {
       const response = await axios.post(
@@ -31,6 +43,33 @@ const ajaxDBCalls = {
     return response;
   },
 };
+
+function* login({ payload }) {
+  try {
+    yield put(loginLoading(true));
+
+    const res = yield call(ajaxDBCalls.login, payload);
+
+    yield put(loginSuccess(res.data));
+
+    yield put(loginLoading(false));
+  } catch (err) {
+    let errorMessage = "";
+    if (err.request) errorMessage = clientErrorMessage;
+
+    if (err.response) {
+      console.log("something is wrong", err.response.data);
+
+      const { message } = err.response.data;
+      errorMessage = message;
+    }
+
+    yield put(loginFailure(errorMessage));
+    yield put(loginLoading(false));
+    yield delay();
+    yield put(loginFailure(""));
+  }
+}
 
 function* postReferral({ payload }) {
   try {
@@ -58,6 +97,7 @@ function* postReferral({ payload }) {
     yield put(postReferralFailure(""));
   }
 }
+
 function* getReferral({ payload }) {
   try {
     yield put(getReferralLoading(true));
@@ -86,6 +126,9 @@ function* getReferral({ payload }) {
 }
 
 //Watchers
+function* loginWatcher() {
+  yield takeLatest(LOGIN_REQUEST, login);
+}
 function* postReferralWatcher() {
   yield takeLatest(POST_REFERRAL_REQUEST, postReferral);
 }
@@ -94,6 +137,7 @@ function* getReferralWatcher() {
 }
 
 export default function* authSagas() {
+  yield spawn(loginWatcher);
   yield spawn(postReferralWatcher);
   yield spawn(getReferralWatcher);
 }

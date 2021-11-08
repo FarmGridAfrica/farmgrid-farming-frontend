@@ -9,7 +9,54 @@ import {
   POST_REFERRAL_LOADING,
   POST_REFERRAL_REQUEST,
   POST_REFERRAL_SUCCESS,
+  LOGIN_FAIL,
+  LOGIN_LOADING,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGOUT,
+  CLEAR_LOGIN_SUCCESS,
 } from "../types";
+
+export const logout = () => {
+  return {
+    type: LOGOUT,
+  };
+};
+
+export const loginRequest = (prop) => {
+  return {
+    type: LOGIN_REQUEST,
+    payload: prop,
+  };
+};
+
+export const loginSuccess = (prop) => {
+  return {
+    type: LOGIN_SUCCESS,
+    payload: prop,
+  };
+};
+
+export const clearLoginSuccess = (prop) => {
+  return {
+    type: CLEAR_LOGIN_SUCCESS,
+    payload: prop,
+  };
+};
+
+export const loginFailure = (errors) => {
+  return {
+    type: LOGIN_FAIL,
+    payload: { errors },
+  };
+};
+
+export const loginLoading = (loading) => {
+  return {
+    type: LOGIN_LOADING,
+    payload: loading,
+  };
+};
 
 export const postReferralRequest = (prop) => {
   return {

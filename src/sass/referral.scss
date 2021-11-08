@@ -54,6 +54,12 @@ body {
   scroll-snap-type: none;
 }
 
+.formcard {
+  position: relative;
+  padding: 10px 30px;
+  margin: 0px auto;
+}
+
 .showcase .showcase-form .copy-section {
   margin-top: 50px;
 }
@@ -72,7 +78,7 @@ p {
   margin: -15px auto;
 }
 
-.showcase-form .form-control {
+.form-control {
   margin: 20px 0;
 }
 
@@ -84,11 +90,11 @@ p {
   margin-right: auto;
 }
 
-.showcase-form input[type="text"],
-.showcase-form input[type="email"],
-.showcase-form input[type="password"],
-.showcase-form input[type="number"],
-.showcase-form input[type="date"] {
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"] {
   border: 1px solid #c4c4c4;
   border-radius: 10px;
   height: 40px;
@@ -97,20 +103,20 @@ p {
   width: 100%;
 }
 
-.showcase-form textarea[type="text"] {
+textarea[type="text"] {
   border: 1px solid #c4c4c4;
   border-radius: 10px;
   height: 120px;
-  padding-left: 10px;
+  padding: 10px;
   resize: none;
   font-size: 14px;
   width: 100%;
 }
-.showcase-form textarea:focus {
+textarea:focus {
   outline: none;
 }
 
-.showcase-form input:focus {
+input:focus {
   outline: none;
 }
 

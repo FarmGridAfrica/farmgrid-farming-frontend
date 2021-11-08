@@ -6,7 +6,7 @@ export const BASE_URL = "https://farmgrid-referral-api.herokuapp.com/api/v1/";
 export const BASE_URL_DEV = "http://localhost:5000/api/v1";
 
 const instance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL_DEV,
   headers: {
     "Content-Type": "application/json",
   },

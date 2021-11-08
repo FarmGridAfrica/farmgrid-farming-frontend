@@ -9,9 +9,9 @@ import {
 export const UploadForm = ({ formik }) => {
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
-  const [url, setUrl] = useState([]);
+  const [url, setUrl] = useState("");
   const [uploadUrl, setUploadUrl] = useState("");
-  const [progress, setProgress] = useState("");
+  const [progress, setProgress] = useState(0);
 
   const types = ["image/png", "image/jpeg"];
 
@@ -23,7 +23,7 @@ export const UploadForm = ({ formik }) => {
     if (selected && types.includes(selected.type)) {
       setFile(selected);
       setUrl(URL.createObjectURL(selected));
-      // fileUpload(selected, setUploadUrl, setProgress);
+      fileUpload(selected, setUploadUrl, formik, setProgress);
 
       setError("");
     } else {
@@ -33,30 +33,31 @@ export const UploadForm = ({ formik }) => {
   };
 
   return (
-    <div className="upload">
-      <input
-        type="file"
-        accept={types.join(",")}
-        ref={inputFileRef}
-        onChange={(e) => changeHandle(e)}
-      />
-
-      <div
-        onClick={() => {
-          inputFileRef.current.click();
-        }}
-        className="upload-btn"
-      >
-        Upload Image
+    <div className="upload my-1">
+      <div className="display-grid-2">
+        <input
+          type="file"
+          accept={types.join(",")}
+          ref={inputFileRef}
+          onChange={(e) => changeHandle(e)}
+        />
+        <div
+          onClick={() => {
+            inputFileRef.current.click();
+          }}
+          className="upload-btn"
+        >
+          Upload Image
+        </div>
+        <div className="upload-progress">progress: {progress}%</div>
       </div>
-
       {error && <div className="my-1 text-danger">{error}</div>}
-      <img o className="my-1" src={url} alt="" />
+      {uploadUrl && <img className="my-1" src={uploadUrl} />}
     </div>
   );
 };
 
-const fileUpload = async (file, setUploadUrl, setProgress) => {
+const fileUpload = async (file, setUploadUrl, formik, setProgress) => {
   const storage = getStorage();
 
   const storageRef = sRef(storage, "image/" + file.name);
@@ -70,7 +71,7 @@ const fileUpload = async (file, setUploadUrl, setProgress) => {
   uploadTask.on(
     "state-change",
     (snap) => {
-      progress = (snap.bytesTransferred / snap.totalBytes) * 100;
+      progress = Math.floor((snap.bytesTransferred / snap.totalBytes) * 100);
       setProgress(progress);
       console.log(progress);
     },
@@ -83,9 +84,9 @@ const fileUpload = async (file, setUploadUrl, setProgress) => {
 
       setUploadUrl(imgUrl);
 
+      formik.setFieldValue("photo", imgUrl);
+
       console.log(imgUrl);
     }
   );
-
-  return { imgUrl, progress, error };
 };

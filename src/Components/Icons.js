@@ -1,5 +1,5 @@
 import React from "react";
-import { SocialMediaIconsReact } from "social-media-icons-react";
+import { SocialMediaIconsReact } from "social-media-icons-react"; // @ts-ignore
 import { FaTelegram } from "react-icons/fa";
 import { SiMedium } from "react-icons/si";
 import toast from "react-hot-toast";

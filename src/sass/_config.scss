@@ -22,7 +22,7 @@ $top-bar-background: #eaeaff;
   overflow: hidden;
   height: 250px;
   /* padding controls height. will always be perfectly sqaure regardless of width */
-  padding: 50% 0;
+  padding: 20% 0;
   position: relative;
   cursor: pointer;
   border-radius: 5px;
@@ -42,7 +42,7 @@ $top-bar-background: #eaeaff;
 
 .btn-medium {
   padding: 5px 0px;
-  font-size: 20px;
+  font-size: 16px;
   background-color: $primary;
   color: $light;
   border-radius: 10px;
@@ -50,16 +50,22 @@ $top-bar-background: #eaeaff;
   border: 2px solid $primary;
   font-weight: 500;
   text-align: center;
+  cursor: pointer;
 
-  &:hover {
-    text-decoration: none;
-    color: $primary;
-    padding: 6px 21px;
-    border: 2px solid $primary;
-    background-color: $light;
-    font-weight: 500;
-    transition: all 0.5s ease;
+  .loader {
+    height: 20px;
+    margin-top: 2px;
   }
+
+  // &:hover {
+  //   text-decoration: none;
+  //   color: $primary;
+  //   padding: 6px 21px;
+  //   border: 2px solid $primary;
+  //   background-color: $light;
+  //   font-weight: 500;
+  //   transition: all 0.5s ease;
+  // }
 }
 
 .container {
@@ -77,6 +83,7 @@ h5,
 h6 {
   margin: 0;
 }
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -192,18 +199,42 @@ h6 {
   padding: 4rem;
 }
 
+//font weight
 .font-weight-normal {
   font-weight: normal;
+}
+
+//font size
+.lead {
+  font-size: 18px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+.font-16 {
+  font-size: 16px;
 }
 .font-18 {
   font-size: 18px;
 }
+.font-20 {
+  font-size: 20px;
+}
+
 .font-22 {
   font-size: 22px;
 }
+.font-24 {
+  font-size: 24px;
+}
+
+//font-color
+.success {
+  color: $primary;
+}
 
 //display
-
 .display-grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -220,7 +251,34 @@ input[type="file"] {
   display: none;
 }
 
+//text-align
+.text-center {
+  text-align: center;
+}
+.text-end {
+  text-align: end;
+}
+.text-start {
+  text-align: start;
+}
+
 //Upload
 .upload {
   height: 150px;
+
+  img {
+    width: 150px;
+    height: 150px;
+    display: block;
+  }
+
+  .upload-progress {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+//border
+.rounded {
+  border-radius: 5%;
 }

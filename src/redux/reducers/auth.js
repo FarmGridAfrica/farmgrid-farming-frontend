@@ -1,4 +1,9 @@
-import { GET_REFERRAL_SUCCESS, POST_REFERRAL_SUCCESS } from "../types";
+import {
+  GET_REFERRAL_SUCCESS,
+  LOGIN_SUCCESS,
+  LOGOUT,
+  POST_REFERRAL_SUCCESS,
+} from "../types";
 
 const initialState = () => ({
   user: {},
@@ -8,15 +13,20 @@ const initialState = () => ({
 
 const authReducer = (state = initialState(), { type, payload }) => {
   switch (type) {
-    // case LOGOUT:
-    //   return {
-    //     ...state,
-    //     user: {},
-    //     isLoggedIn: false,
-    //     token: "",
-    //     refreshToken: "",
-    //     userType: "",
-    //   };
+    case LOGOUT:
+      return {
+        ...state,
+        user: {},
+        isLoggedIn: false,
+        token: "",
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        token: payload.token,
+        user: payload.user,
+        isLoggedIn: true,
+      };
 
     case POST_REFERRAL_SUCCESS:
       return {

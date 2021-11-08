@@ -3,55 +3,67 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
-import {
-  clearPostReferralSuccess,
-  postReferralRequest,
-} from "../../../redux/action";
+import { Link, useHistory } from "react-router-dom";
+import { clearLoginSuccess, loginRequest } from "../../../redux/action";
 import { Navbar } from "../../../Components/navbar";
+import { SubmitBtn } from "../../../Components/button";
 
 const Login = () => {
-  const { postReferralSuccess, postReferralError, postReferralLoading, user } =
-    useSelector((state) => {
+  const { loginSuccess, loginError, loginLoading, user } = useSelector(
+    (state) => {
       const {
-        success: { postReferral: postReferralSuccess },
-        errors: { postReferral: postReferralError },
+        success: { login: loginSuccess },
+        errors: { login: loginError },
       } = state.ajaxStatuses;
 
-      const { postReferralLoading } = state.loadingIndicator;
+      const { loginLoading } = state.loadingIndicator;
 
       const { user } = state.userData;
 
       return {
-        postReferralSuccess,
-        postReferralError,
-        postReferralLoading,
+        loginSuccess,
+        loginError,
+        loginLoading,
         user,
       };
-    });
+    }
+  );
 
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
   const formik = useFormik({
     initialValues: {
-      walletAddress: "",
-      telegramUsername: "",
-      facebookUsername: "",
-      twitterUsername: "",
-      instagramUsername: "",
+      email: "",
+      password: "",
     },
     validationSchema: yup.object({}),
 
     onSubmit: (prop) => {
-      let formData = prop;
-
-      dispatch(postReferralRequest({ formData }));
+      dispatch(loginRequest(prop));
     },
   });
+
+  useEffect(() => {
+    if (loginError) {
+      toast.error(loginError, {
+        duration: 3000,
+      });
+    }
+  }, [loginError]);
+
+  useEffect(() => {
+    if (loginSuccess) {
+      history.replace("/farm");
+    }
+    dispatch(clearLoginSuccess());
+  }, [loginSuccess]);
+
   return (
     <div className="main-background">
       <Navbar />
-      <div className="showcase-form auth-form card">
+      <div className="showcase-form auth-form mt-4 card">
         <div>
           <h1 className="auth-form-h1">Log in</h1>
           <form onSubmit={formik.handleSubmit}>
@@ -59,8 +71,8 @@ const Login = () => {
               <label>Email</label>
               <input
                 type="email"
-                name="telegramUsername"
-                {...formik.getFieldProps("telegramUsername")}
+                name="email"
+                {...formik.getFieldProps("email")}
                 placeholder="E-mail"
                 required
               />
@@ -69,26 +81,14 @@ const Login = () => {
               <label>Password</label>
               <input
                 type="password"
-                name="facebookUsername"
-                {...formik.getFieldProps("facebookUsername")}
+                name="password"
+                {...formik.getFieldProps("password")}
                 placeholder="Password"
                 required
               />
             </div>
 
-            <div>
-              <button type="submit" className="btn">
-                {postReferralLoading ? (
-                  <img
-                    className="loader"
-                    src={"/img/referral/loader.gif"}
-                    alt=""
-                  ></img>
-                ) : (
-                  "Log in"
-                )}
-              </button>
-            </div>
+            <SubmitBtn text="Log in" loading={loginLoading} />
           </form>
           <h3 className="auth-form-swap">
             Don't have an account?
