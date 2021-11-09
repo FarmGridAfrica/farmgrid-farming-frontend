@@ -8,8 +8,14 @@ import {
   GET_FARMS_SUCCESS,
   GET_FARM_FAIL,
   GET_FARM_SUCCESS,
+  GET_INVESTMENTS_FAIL,
+  GET_INVESTMENTS_SUCCESS,
+  GET_INVESTMENT_FAIL,
+  GET_INVESTMENT_SUCCESS,
   GET_REFERRAL_FAIL,
   GET_REFERRAL_SUCCESS,
+  GET_USER_INVESTMENTS_FAIL,
+  GET_USER_INVESTMENTS_SUCCESS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   POST_CREATE_FARM_FAIL,
@@ -18,6 +24,8 @@ import {
   POST_CREATE_INVESTMENT_SUCCESS,
   POST_REFERRAL_FAIL,
   POST_REFERRAL_SUCCESS,
+  PUT_INVESTMENT_FAIL,
+  PUT_INVESTMENT_SUCCESS,
 } from "../types";
 
 const initialState = {
@@ -73,6 +81,38 @@ const ajaxStatuses = (state = initialState, { type, payload }) => {
 
     case GET_FARM_SUCCESS:
       state.success.getFarm = payload.message;
+      return { ...state };
+
+    case GET_USER_INVESTMENTS_FAIL:
+      state.errors.getUserInvestments = payload.errors;
+      return { ...state };
+
+    case GET_USER_INVESTMENTS_SUCCESS:
+      state.success.getUserInvestments = payload.message;
+      return { ...state };
+
+    case GET_INVESTMENTS_FAIL:
+      state.errors.getInvestments = payload.errors;
+      return { ...state };
+
+    case GET_INVESTMENTS_SUCCESS:
+      state.success.getInvestments = payload.message;
+      return { ...state };
+
+    case GET_INVESTMENT_FAIL:
+      state.errors.getInvestment = payload.errors;
+      return { ...state };
+
+    case GET_INVESTMENT_SUCCESS:
+      state.success.getInvestment = payload.message;
+      return { ...state };
+
+    case PUT_INVESTMENT_FAIL:
+      state.errors.putInvestment = payload.errors;
+      return { ...state };
+
+    case PUT_INVESTMENT_SUCCESS:
+      state.success.putInvestment = payload.message;
       return { ...state };
 
     case CLEAR_GET_REFERRAL_SUCCESS:

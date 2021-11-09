@@ -1,11 +1,15 @@
 import {
   GET_FARMS_LOADING,
   GET_FARM_LOADING,
+  GET_INVESTMENTS_LOADING,
+  GET_INVESTMENT_LOADING,
   GET_REFERRAL_LOADING,
+  GET_USER_INVESTMENTS_LOADING,
   LOGIN_LOADING,
   POST_CREATE_FARM_LOADING,
   POST_CREATE_INVESTMENT_LOADING,
   POST_REFERRAL_LOADING,
+  PUT_INVESTMENT_LOADING,
 } from "../types";
 
 const initialState = {
@@ -16,6 +20,10 @@ const initialState = {
   postCreateInvestmentLoading: false,
   getFarmsLoading: true,
   getFarmLoading: true,
+  getUserInvestmentsLoading: true,
+  getInvestmentsLoading: true,
+  getInvestmentLoading: true,
+  putInvestmentLoading: false,
 };
 
 const loadingIndicator = (state = initialState, { type, payload }) => {
@@ -57,6 +65,26 @@ const loadingIndicator = (state = initialState, { type, payload }) => {
       return {
         ...state,
         getFarmLoading: payload,
+      };
+    case GET_USER_INVESTMENTS_LOADING:
+      return {
+        ...state,
+        getUserInvestmentsLoading: payload,
+      };
+    case GET_INVESTMENTS_LOADING:
+      return {
+        ...state,
+        getInvestmentsLoading: payload,
+      };
+    case GET_INVESTMENT_LOADING:
+      return {
+        ...state,
+        getInvestmentLoading: payload,
+      };
+    case PUT_INVESTMENT_LOADING:
+      return {
+        ...state,
+        putInvestmentLoading: payload,
       };
 
     default:

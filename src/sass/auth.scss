@@ -54,6 +54,13 @@
     font-size: 20px;
     cursor: pointer;
   }
+
+  .logo {
+    cursor: pointer;
+    img {
+      width: 200px;
+    }
+  }
 }
 
 .invest-heading {
@@ -76,4 +83,71 @@
   .btn-medium {
     width: 300px;
   }
+}
+
+//table
+
+#customers {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  border-style: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+th:first-child {
+  border-top-left-radius: 10px;
+}
+th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: $primary;
+  color: white;
+}
+
+.table-btn-active {
+  cursor: pointer;
+  background: $primary;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  padding: 2px 0;
+}
+
+.table-btn-pending {
+  cursor: pointer;
+  background: $secondary-color;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  padding: 2px 0;
 }

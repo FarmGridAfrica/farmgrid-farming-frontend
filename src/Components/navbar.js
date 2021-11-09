@@ -7,23 +7,21 @@ export const Navbar = () => {
   return (
     <div className="navbar-section">
       <nav className="nav-container">
-        <img src="" alt="" />
+        <div className="logo">
+          <img src={"/img/logo/portalLogo.png"} alt="" />
+        </div>
         <ul className="nav-menu">
-          <li>
-            <Link to="/farm" className="nav-links">
-              Farms{" "}
-            </Link>
-          </li>
-          <li>
-            <Link to="/auth/register" className="nav-links">
-              Register
-            </Link>
-          </li>
-          <li>
-            <Link to="/auth/login" className="nav-links">
-              Log in
-            </Link>
-          </li>
+          <Link to="/farm" className="nav-links">
+            Farms{" "}
+          </Link>
+
+          <Link to="/auth/register" className="nav-links">
+            Register
+          </Link>
+
+          <Link to="/auth/login" className="nav-links">
+            Log in
+          </Link>
         </ul>
       </nav>
     </div>
@@ -36,19 +34,20 @@ export const DashboardNav = () => {
   return (
     <div className="navbar-section">
       <nav className="nav-container">
-        <img src="" alt="" />
+        <div className="logo">
+          <img src={"/img/logo/portalLogo.png"} alt="" />
+        </div>
         <ul className="nav-menu">
           <Link to="/farm" className="nav-links">
             Farms{" "}
           </Link>
-          <li>
-            <a className="nav-links">My Farms</a>
-          </li>
-          <li>
-            <a onClick={() => dispatch(logout())} className="nav-links">
-              Log out
-            </a>
-          </li>
+          <Link to="/dashboard" className="nav-links">
+            My Farms
+          </Link>
+
+          <a onClick={() => dispatch(logout())} className="nav-links">
+            Log out
+          </a>
         </ul>
       </nav>
     </div>
@@ -61,14 +60,23 @@ export const AdminNav = () => {
   return (
     <div className="navbar-section">
       <nav className="nav-container">
-        <img src="" alt="" />
+        <div className="logo">
+          <img src={"/img/logo/portalLogo.png"} alt="" />
+        </div>
+
         <ul className="nav-menu">
-          <li>
-            <a className="nav-links">Admin</a>
-          </li>
-          <li>
-            <a className="nav-links">Add Farm</a>
-          </li>
+          <Link to="/admin/dashboard" className="nav-links">
+            Admin
+          </Link>
+
+          <Link to="/admin/addfarm" className="nav-links">
+            Add Farm
+          </Link>
+
+          <Link to="/admin/investment" className="nav-links">
+            Investments
+          </Link>
+
           <a onClick={() => dispatch(logout())} className="nav-links">
             Log out
           </a>

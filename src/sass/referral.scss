@@ -93,6 +93,7 @@ p {
 input[type="text"],
 input[type="email"],
 input[type="password"],
+select,
 input[type="number"],
 input[type="date"] {
   border: 1px solid #c4c4c4;
@@ -115,7 +116,7 @@ textarea[type="text"] {
 textarea:focus {
   outline: none;
 }
-
+select,
 input:focus {
   outline: none;
 }

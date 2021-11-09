@@ -26,16 +26,21 @@ const ajaxDBCalls = {
     return response;
   },
 
-  postReferral: async ({ formData, refId }) => {
-    if (refId) {
-      const response = await axios.post(
-        `/auth/register?refId=${refId}`,
-        formData
-      );
+  postReferral: async ({ data: { formData, isSignup }, refId }) => {
+    if (isSignup) {
+      const response = await axios.post(`/auth/signup`, formData);
       return response;
     } else {
-      const response = await axios.post(`/auth/register`, formData);
-      return response;
+      if (refId) {
+        const response = await axios.post(
+          `/auth/register?refId=${refId}`,
+          formData
+        );
+        return response;
+      } else {
+        const response = await axios.post(`/auth/register`, formData);
+        return response;
+      }
     }
   },
   getReferral: async (formData) => {

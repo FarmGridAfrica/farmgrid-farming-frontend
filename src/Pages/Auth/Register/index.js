@@ -9,6 +9,7 @@ import {
   postReferralRequest,
 } from "../../../redux/action";
 import { Navbar } from "../../../Components/navbar";
+import { SubmitBtn } from "../../../Components/button";
 
 const Register = () => {
   const { postReferralSuccess, postReferralError, postReferralLoading, user } =
@@ -30,38 +31,65 @@ const Register = () => {
       };
     });
 
+  useEffect(() => {
+    if (postReferralError) {
+      toast.error(postReferralError, {
+        duration: 3000,
+      });
+    }
+  }, [postReferralError]);
+
   const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
-      walletAddress: "",
-      telegramUsername: "",
-      facebookUsername: "",
-      twitterUsername: "",
-      instagramUsername: "",
+      firstName: "",
+      lastName: "",
+      accountNumber: "",
+      country: "",
+      email: "",
+      password: "",
     },
     validationSchema: yup.object({}),
 
     onSubmit: (prop) => {
+      const isSignup = true;
+
       let formData = prop;
 
-      dispatch(postReferralRequest({ formData }));
+      const data = {
+        formData,
+        isSignup,
+      };
+      console.log(data);
+      dispatch(postReferralRequest({ data }));
     },
   });
+
   return (
     <div className="main-background">
       <Navbar />
-      <div className="showcase-form auth-form card">
+      <div className="showcase-form auth-form mt-4 card">
         <div>
           <h1 className="auth-form-h1">Register</h1>
           <form onSubmit={formik.handleSubmit}>
             <div className="form-control">
-              <label>Email</label>
+              <label>first name</label>
               <input
-                type="email"
-                name="telegramUsername"
-                {...formik.getFieldProps("telegramUsername")}
-                placeholder="E-mail"
+                type="text"
+                name="firstName"
+                {...formik.getFieldProps("firstName")}
+                placeholder="first name"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label>Last name</label>
+              <input
+                type="text"
+                name="lastName"
+                {...formik.getFieldProps("lastName")}
+                placeholder="last name"
                 required
               />
             </div>
@@ -69,19 +97,28 @@ const Register = () => {
               <label>Email</label>
               <input
                 type="email"
-                name="telegramUsername"
-                {...formik.getFieldProps("telegramUsername")}
+                name="email"
+                {...formik.getFieldProps("email")}
                 placeholder="E-mail"
                 required
               />
             </div>
             <div className="form-control">
-              <label>Email</label>
+              <label>Country</label>
+              <select name="country" {...formik.getFieldProps("country")}>
+                <option value="Active"></option>
+                <option value="Kenya">Kenya</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="South Africa">South Africa</option>
+              </select>
+            </div>
+            <div className="form-control">
+              <label>Account Number</label>
               <input
-                type="email"
-                name="telegramUsername"
-                {...formik.getFieldProps("telegramUsername")}
-                placeholder="E-mail"
+                type="text"
+                name="accountNumber"
+                {...formik.getFieldProps("accountNumber")}
+                placeholder="Account number"
                 required
               />
             </div>
@@ -89,26 +126,14 @@ const Register = () => {
               <label>Password</label>
               <input
                 type="password"
-                name="facebookUsername"
-                {...formik.getFieldProps("facebookUsername")}
+                name="password"
+                {...formik.getFieldProps("password")}
                 placeholder="Password"
                 required
               />
             </div>
 
-            <div>
-              <button type="submit" className="btn">
-                {postReferralLoading ? (
-                  <img
-                    className="loader"
-                    src={"/img/referral/loader.gif"}
-                    alt=""
-                  ></img>
-                ) : (
-                  "Register"
-                )}
-              </button>
-            </div>
+            <SubmitBtn text="Register" loading={postReferralLoading} />
           </form>
           <h3 className="auth-form-swap">
             Already a user?

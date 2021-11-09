@@ -31,7 +31,9 @@ const authReducer = (state = initialState(), { type, payload }) => {
     case POST_REFERRAL_SUCCESS:
       return {
         ...state,
+        token: payload.token,
         user: payload.user,
+        isLoggedIn: true,
       };
     case GET_REFERRAL_SUCCESS:
       return {

@@ -1,34 +1,37 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { getUserInvestmentsRequest } from "../../../redux/action";
-import { DashboardNav } from "../../../Components/navbar";
+import { getInvestmentsRequest } from "../../../../redux/action";
+import { AdminNav, DashboardNav } from "../../../../Components/navbar";
+import { useHistory } from "react-router";
 
-const Home = () => {
+const Investments = () => {
+  const history = useHistory();
+
   const {
-    getUserInvestmentsSuccess,
+    getInvestmentsSuccess,
     investments,
-    getUserInvestmentsError,
-    getUserInvestmentsLoading,
+    getInvestmentsError,
+    getInvestmentsLoading,
     user,
     isLoggedIn,
     token,
   } = useSelector((state) => {
     const {
-      success: { getUserInvestments: getUserInvestmentsSuccess },
-      errors: { getUserInvestments: getUserInvestmentsError },
+      success: { getInvestments: getInvestmentsSuccess },
+      errors: { getInvestments: getInvestmentsError },
     } = state.ajaxStatuses;
 
-    const { getUserInvestmentsLoading } = state.loadingIndicator;
+    const { getInvestmentsLoading } = state.loadingIndicator;
 
     const { user, token, isLoggedIn } = state.userData;
     const { farms } = state.farmData;
     const { investments } = state.investmentData;
 
     return {
-      getUserInvestmentsSuccess,
-      getUserInvestmentsError,
-      getUserInvestmentsLoading,
+      getInvestmentsSuccess,
+      getInvestmentsError,
+      getInvestmentsLoading,
       investments,
       isLoggedIn,
       token,
@@ -38,31 +41,35 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserInvestmentsRequest(token));
-  }, [getUserInvestmentsRequest]);
+    dispatch(getInvestmentsRequest(token));
+  }, [getInvestmentsRequest]);
 
   const [invmLength, setInvmLength] = useState(0);
 
   useEffect(() => {
-    if (getUserInvestmentsError) {
-      toast.error(getUserInvestmentsError, {
+    if (getInvestmentsError) {
+      toast.error(getInvestmentsError, {
         duration: 3000,
       });
     }
 
-    if (!getUserInvestmentsLoading) {
+    if (!getInvestmentsLoading) {
       const invesmentLength = investments.length - 1;
       setInvmLength(invesmentLength);
     }
-  }, [getUserInvestmentsError]);
+  }, [getInvestmentsError]);
+
+  const openInvestemt = (_) => {
+    history.replace(`/admin/investment/${_._id}`);
+  };
 
   return (
     <div>
-      <DashboardNav />
+      <AdminNav />
       <section className="container">
         <h1 className="invest-heading">My Farms</h1>
 
-        {!getUserInvestmentsLoading && (
+        {!getInvestmentsLoading && (
           <div className="investemt-table">
             <table id="customers">
               <thead>
@@ -97,7 +104,12 @@ const Home = () => {
                       </div>
                     </td>
                     <td>
-                      <div className="table-btn-active">View</div>
+                      <div
+                        onClick={() => openInvestemt(_)}
+                        className="table-btn-active"
+                      >
+                        View
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -110,4 +122,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Investments;
