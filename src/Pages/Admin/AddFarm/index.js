@@ -39,6 +39,7 @@ const AddFarm = () => {
       farmName: "",
       photo: "",
       description: "",
+      country: "",
       returnOfInvestment: "",
       amount: "",
       startDate: "",
@@ -115,6 +116,7 @@ const AddFarm = () => {
                       required
                     />
                   </div>
+
                   <UploadForm formik={formik} />
                 </div>
 
@@ -127,6 +129,15 @@ const AddFarm = () => {
                       {...formik.getFieldProps("description")}
                       required
                     />
+                  </div>
+                  <div className="form-control">
+                    <label>Country</label>
+                    <select name="country" {...formik.getFieldProps("country")}>
+                      <option value="Active"></option>
+                      <option value="Kenya">Kenya</option>
+                      <option value="Nigeria">Nigeria</option>
+                      <option value="South Africa">South Africa</option>
+                    </select>
                   </div>
                   <div className="form-control">
                     <label>Start date</label>

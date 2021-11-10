@@ -5,6 +5,7 @@ import Auth from "./Auth";
 import Dashboard from "./Dashboard";
 import Farm from "./Farm";
 import Admin from "./Admin";
+import Payment from "./Payment";
 
 const Pages = () => {
   return (
@@ -16,6 +17,7 @@ const Pages = () => {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/farm" component={Farm} />
         <Route path="/admin" component={Admin} />
+        <Route path="/payment" component={Payment} />
       </Switch>
     </Suspense>
   );

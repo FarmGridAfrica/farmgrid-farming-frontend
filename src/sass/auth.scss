@@ -151,3 +151,10 @@ th:last-child {
   text-align: center;
   padding: 2px 0;
 }
+
+.payment {
+  background-color: #e7ffdf;
+  border: 2px $primary-color dashed;
+  border-radius: 10px;
+  text-align: start;
+}

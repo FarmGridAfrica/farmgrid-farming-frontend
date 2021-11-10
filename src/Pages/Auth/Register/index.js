@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import {
   clearPostReferralSuccess,
   postReferralRequest,
@@ -40,6 +40,14 @@ const Register = () => {
   }, [postReferralError]);
 
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (postReferralSuccess) {
+      history.replace("/farm");
+    }
+    dispatch(clearPostReferralSuccess());
+  }, [postReferralSuccess]);
 
   const formik = useFormik({
     initialValues: {
@@ -105,8 +113,12 @@ const Register = () => {
             </div>
             <div className="form-control">
               <label>Country</label>
-              <select name="country" {...formik.getFieldProps("country")}>
-                <option value="Active"></option>
+              <select
+                name="country"
+                {...formik.getFieldProps("country")}
+                required
+              >
+                <option></option>
                 <option value="Kenya">Kenya</option>
                 <option value="Nigeria">Nigeria</option>
                 <option value="South Africa">South Africa</option>
