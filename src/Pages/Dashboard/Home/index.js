@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { getUserInvestmentsRequest } from "../../../redux/action";
+import {
+  getUserInvestmentsRequest,
+  putInvestmentRequest,
+} from "../../../redux/action";
 import { DashboardNav } from "../../../Components/navbar";
+import { useHistory } from "react-router";
 
 const Home = () => {
+  const history = useHistory();
   const {
     getUserInvestmentsSuccess,
     investments,
@@ -35,6 +40,12 @@ const Home = () => {
     };
   });
 
+  useEffect(() => {
+    if (!isLoggedIn) {
+      history.push("/auth/login");
+    }
+  }, [isLoggedIn]);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -56,6 +67,14 @@ const Home = () => {
     }
   }, [getUserInvestmentsError]);
 
+  const withdrawal = (_) => {
+    console.log(_._id);
+    let formData = { status: "Withdrawn" };
+    dispatch(putInvestmentRequest({ formData, id: _._id }));
+
+    history.push("/withdraw");
+  };
+
   return (
     <div>
       <DashboardNav />
@@ -68,9 +87,10 @@ const Home = () => {
               <thead>
                 <tr>
                   <th>Farm</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                  <th>ROI%</th>
+                  <th>Amount</th>
+                  <th>Expected Return</th>
+                  <th>APY%</th>
+                  <th>Duration</th>
                   <th>Status</th>
                   <th></th>
                 </tr>
@@ -82,23 +102,37 @@ const Home = () => {
                     key={index}
                   >
                     <td>{_.farm.farmName}</td>
-                    <td>13-01-2022</td>
-                    <td>13-03-2022</td>
-                    <td>{_.farm.returnOfInvestment}%</td>
                     <td>
-                      <div
-                        className={
-                          _.status == "Active"
-                            ? "table-btn-active"
-                            : "table-btn-pending"
-                        }
-                      >
-                        {_.status}
-                      </div>
+                      {_.amount}
+                      {"(" + "$" + _.dollarEquivalent + ")"}
                     </td>
                     <td>
-                      <div className="table-btn-active">View</div>
+                      {" "}
+                      {_.expectedReturn}
+                      {"(" + "$" + _.expectedReturnDollar + ")"}
                     </td>
+                    <td>{_.farm.annualPercentageYield}%</td>
+                    <td>{_.farm.duration} months</td>
+                    <td>
+                      {_.status == "Active" && (
+                        <div className={"table-btn-active"}>{_.status} </div>
+                      )}
+                      {_.status == "Withdrawn" && (
+                        <div className={"table-btn-pending"}>{_.status}</div>
+                      )}
+                    </td>
+
+                    {_.status == "Completed" && (
+                      <td>
+                        {}
+                        <div
+                          onClick={() => withdrawal(_)}
+                          className="table-btn-active"
+                        >
+                          Withdraw
+                        </div>
+                      </td>
+                    )}
                   </tr>
                 ))}
               </tbody>

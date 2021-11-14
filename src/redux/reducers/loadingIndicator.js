@@ -5,6 +5,7 @@ import {
   GET_INVESTMENT_LOADING,
   GET_REFERRAL_LOADING,
   GET_USER_INVESTMENTS_LOADING,
+  GOOGLE_AUTH_LOADING,
   LOGIN_LOADING,
   POST_CREATE_FARM_LOADING,
   POST_CREATE_INVESTMENT_LOADING,
@@ -24,6 +25,7 @@ const initialState = {
   getInvestmentsLoading: true,
   getInvestmentLoading: true,
   putInvestmentLoading: false,
+  googleAuthLoading: false,
 };
 
 const loadingIndicator = (state = initialState, { type, payload }) => {
@@ -32,6 +34,11 @@ const loadingIndicator = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loginLoading: payload,
+      };
+    case GOOGLE_AUTH_LOADING:
+      return {
+        ...state,
+        googleAuthLoading: payload,
       };
 
     case POST_REFERRAL_LOADING:

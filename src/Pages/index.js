@@ -6,6 +6,7 @@ import Dashboard from "./Dashboard";
 import Farm from "./Farm";
 import Admin from "./Admin";
 import Payment from "./Payment";
+import Withdraw from "./Withdraw";
 
 const Pages = () => {
   return (
@@ -18,6 +19,7 @@ const Pages = () => {
         <Route path="/farm" component={Farm} />
         <Route path="/admin" component={Admin} />
         <Route path="/payment" component={Payment} />
+        <Route path="/withdraw" component={Withdraw} />
       </Switch>
     </Suspense>
   );

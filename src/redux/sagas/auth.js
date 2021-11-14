@@ -3,6 +3,7 @@ import { call, put, takeLatest, spawn } from "redux-saga/effects";
 
 import {
   GET_REFERRAL_REQUEST,
+  GOOGLE_AUTH_REQUEST,
   LOGIN_REQUEST,
   POST_REFERRAL_REQUEST,
 } from "../types";
@@ -12,6 +13,9 @@ import {
   getReferralFailure,
   getReferralLoading,
   getReferralSuccess,
+  googleAuthFailure,
+  googleAuthLoading,
+  googleAuthSuccess,
   loginFailure,
   loginLoading,
   loginSuccess,
@@ -21,9 +25,15 @@ import {
 } from "../action";
 
 const ajaxDBCalls = {
-  login: async (formData) => {
-    const response = await axios.post(`/auth/login`, formData);
-    return response;
+  login: async (data) => {
+    if (typeof data === "string" || data instanceof String) {
+      console.log(data);
+      const response = await axios.post(`/auth/login/?id=${data}`);
+      return response;
+    } else {
+      const response = await axios.post(`/auth/login`, data);
+      return response;
+    }
   },
 
   postReferral: async ({ data: { formData, isSignup }, refId }) => {
@@ -45,6 +55,11 @@ const ajaxDBCalls = {
   },
   getReferral: async (formData) => {
     const response = await axios.post(`/auth/referral`, formData);
+    return response;
+  },
+
+  googleAuth: async ({ formData, token }) => {
+    const response = await axios.post(`/auth/google/${token}`, formData);
     return response;
   },
 };
@@ -129,6 +144,32 @@ function* getReferral({ payload }) {
     yield put(getReferralFailure(""));
   }
 }
+function* googleAuth({ payload }) {
+  try {
+    yield put(googleAuthLoading(true));
+
+    const res = yield call(ajaxDBCalls.googleAuth, payload);
+
+    yield put(googleAuthSuccess(res.data));
+
+    yield put(googleAuthLoading(false));
+  } catch (err) {
+    let errorMessage = "";
+    if (err.request) errorMessage = clientErrorMessage;
+
+    if (err.response) {
+      console.log("something is wrong", err.response.data);
+
+      const { message } = err.response.data;
+      errorMessage = message;
+    }
+
+    yield put(googleAuthFailure(errorMessage));
+    yield put(googleAuthLoading(false));
+    yield delay();
+    yield put(googleAuthFailure(""));
+  }
+}
 
 //Watchers
 function* loginWatcher() {
@@ -140,9 +181,13 @@ function* postReferralWatcher() {
 function* getReferralWatcher() {
   yield takeLatest(GET_REFERRAL_REQUEST, getReferral);
 }
+function* googleAuthWatcher() {
+  yield takeLatest(GOOGLE_AUTH_REQUEST, googleAuth);
+}
 
 export default function* authSagas() {
   yield spawn(loginWatcher);
   yield spawn(postReferralWatcher);
   yield spawn(getReferralWatcher);
+  yield spawn(googleAuthWatcher);
 }

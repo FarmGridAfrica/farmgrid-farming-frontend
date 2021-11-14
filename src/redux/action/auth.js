@@ -13,6 +13,10 @@ import {
   LOGIN_LOADING,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
+  GOOGLE_AUTH_FAIL,
+  GOOGLE_AUTH_LOADING,
+  GOOGLE_AUTH_REQUEST,
+  GOOGLE_AUTH_SUCCESS,
   LOGOUT,
   CLEAR_LOGIN_SUCCESS,
 } from "../types";
@@ -124,6 +128,34 @@ export const getReferralFailure = (errors) => {
 export const getReferralLoading = (loading) => {
   return {
     type: GET_REFERRAL_LOADING,
+    payload: loading,
+  };
+};
+
+export const googleAuthRequest = (prop) => {
+  return {
+    type: GOOGLE_AUTH_REQUEST,
+    payload: prop,
+  };
+};
+
+export const googleAuthSuccess = (prop) => {
+  return {
+    type: GOOGLE_AUTH_SUCCESS,
+    payload: prop,
+  };
+};
+
+export const googleAuthFailure = (errors) => {
+  return {
+    type: GOOGLE_AUTH_FAIL,
+    payload: { errors },
+  };
+};
+
+export const googleAuthLoading = (loading) => {
+  return {
+    type: GOOGLE_AUTH_LOADING,
     payload: loading,
   };
 };

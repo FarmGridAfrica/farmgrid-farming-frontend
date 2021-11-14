@@ -11,7 +11,7 @@ export const InvestmentCard = ({ farm }) => {
         <div className="display-grid-2">
           <h3 className="font-weight-normal">{farm.farmName}</h3>
           <h3 className="font-weight-normal success text-end">
-            {farm.returnOfInvestment}%
+            {farm.annualPercentageYield}%
           </h3>
         </div>
         <p className="my-1">{farm.description}</p>
@@ -33,7 +33,7 @@ export const ProductCard = ({ farm }) => {
         <div className="display-grid-2">
           <h3 className="font-weight-normal">{farm.farmName}</h3>
           <h3 className="font-weight-normal success text-end">
-            {farm.returnOfInvestment}%
+            {farm.annualPercentageYield}%
           </h3>
         </div>
         <p className="my-1">{farm.description}</p>

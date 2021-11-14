@@ -1,5 +1,6 @@
 import {
   GET_REFERRAL_SUCCESS,
+  GOOGLE_AUTH_SUCCESS,
   LOGIN_SUCCESS,
   LOGOUT,
   POST_REFERRAL_SUCCESS,
@@ -35,6 +36,15 @@ const authReducer = (state = initialState(), { type, payload }) => {
         user: payload.user,
         isLoggedIn: true,
       };
+
+    case GOOGLE_AUTH_SUCCESS:
+      return {
+        ...state,
+        token: payload.token,
+        user: payload.user,
+        isLoggedIn: true,
+      };
+
     case GET_REFERRAL_SUCCESS:
       return {
         ...state,

@@ -7,6 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import { clearLoginSuccess, loginRequest } from "../../../redux/action";
 import { Navbar } from "../../../Components/navbar";
 import { SubmitBtn } from "../../../Components/button";
+import GoogleLogin from "react-google-login";
 
 const Login = () => {
   const { loginSuccess, loginError, loginLoading, user } = useSelector(
@@ -45,6 +46,12 @@ const Login = () => {
     },
   });
 
+  const responseGoogle = (response) => {
+    if (response.getAuthResponse().id_token) {
+      dispatch(loginRequest(response.getAuthResponse().id_token));
+    }
+  };
+
   useEffect(() => {
     if (loginError) {
       toast.error(loginError, {
@@ -64,7 +71,7 @@ const Login = () => {
     <div className="main-background">
       <Navbar />
       <div className="showcase-form auth-form mt-4 card">
-        <div>
+        <div className="py-5">
           <h1 className="auth-form-h1">Log in</h1>
           <form onSubmit={formik.handleSubmit}>
             <div className="form-control">
@@ -97,6 +104,16 @@ const Login = () => {
               Register
             </Link>
           </h3>
+          <div className="google-sign-up">
+            <GoogleLogin
+              clientId="1009378875291-qdmhto918d8uksshhh0fp3vbdaafrfi7.apps.googleusercontent.com"
+              buttonText="Sign Up"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+              style={{ fontWeight: 500, fontSize: 20 }}
+            />
+          </div>
         </div>
       </div>
     </div>

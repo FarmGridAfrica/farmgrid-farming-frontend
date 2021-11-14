@@ -16,6 +16,8 @@ import {
   GET_REFERRAL_SUCCESS,
   GET_USER_INVESTMENTS_FAIL,
   GET_USER_INVESTMENTS_SUCCESS,
+  GOOGLE_AUTH_FAIL,
+  GOOGLE_AUTH_SUCCESS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   POST_CREATE_FARM_FAIL,
@@ -41,6 +43,14 @@ const ajaxStatuses = (state = initialState, { type, payload }) => {
 
     case LOGIN_SUCCESS:
       state.success.login = payload.token;
+      return { ...state };
+
+    case GOOGLE_AUTH_FAIL:
+      state.errors.googleAuth = payload.errors;
+      return { ...state };
+
+    case GOOGLE_AUTH_SUCCESS:
+      state.success.googleAuth = payload.token;
       return { ...state };
 
     case CLEAR_LOGIN_SUCCESS:

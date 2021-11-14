@@ -11,6 +11,7 @@ import {
 } from "../../../redux/action";
 import { DashboardNav, Navbar } from "../../../Components/navbar";
 import { Link, useParams, useHistory } from "react-router-dom";
+import Flag from "react-flagpack";
 
 const SingleFarm = () => {
   let { id } = useParams();
@@ -58,21 +59,28 @@ const SingleFarm = () => {
 
   const dispatch = useDispatch();
 
-  const [duration, setDuration] = useState(null);
-
   useEffect(() => {
     dispatch(getFarmRequest(id));
-
-    if (!getFarmLoading) {
-      let duration = Math.abs(
-        Date.parse(farm.endDate) - Date.parse(farm.startDate)
-      );
-
-      duration = Math.floor(duration / 6048000000);
-
-      setDuration(duration);
-    }
   }, [getFarmRequest]);
+
+  const [amount, setAmount] = useState(null);
+
+  useEffect(() => {
+    if (!getFarmLoading) {
+      let amount = "";
+
+      if (farm.country == "Kenya") {
+        amount = farm.amount + "KSh";
+        setAmount(amount);
+      } else if (farm.country == "South Africa") {
+        amount = "R" + farm.amount;
+        setAmount(amount);
+      } else {
+        amount = "₦" + farm.amount;
+        setAmount(amount);
+      }
+    }
+  }, [getFarmLoading]);
 
   useEffect(() => {
     if (getFarmError) {
@@ -107,9 +115,12 @@ const SingleFarm = () => {
   };
 
   const invest = () => {
-    let formData = { user: user._id, farm: farm._id, unit };
-
-    dispatch(postCreateInvestmentRequest(formData));
+    if (!isLoggedIn) {
+      history.push("/auth/login");
+    } else {
+      let formData = { user: user._id, farm: farm._id, unit };
+      dispatch(postCreateInvestmentRequest(formData));
+    }
   };
 
   return (
@@ -121,21 +132,31 @@ const SingleFarm = () => {
             <div>
               <h1 className="invest-heading">{farm.farmName}</h1>
               <p className="font-18 text-start">{farm.description}</p>
-              <div className="card bg-primary  color-light width-400 p-1 mt-2">
+              <div className="card bg-primary color-light font-weight-400 width-400 p-1 mt-2">
                 <p className="font-20 text-start">
-                  Return of investment: {farm.returnOfInvestment}%
+                  Annual percentage yield: {farm.annualPercentageYield}%
                 </p>
-                <p className="font-20 text-start">Amount: ₦{farm.amount}</p>
-                <p className="font-20 text-start">Duration: {duration} weeks</p>
+                <p className="font-20 text-start">Amount: {amount}</p>
+                <p className="font-20 text-start">
+                  Duration: {farm.duration} months
+                </p>
                 <p className="font-20 text-start">Location: {farm.country}</p>
               </div>
             </div>
             <div className="mt-4 justify-self-center">
               <img
-                className="rounded"
+                className="rounded country-image-size"
                 src={`/img/flag/${farm.country}.png`}
                 alt=""
               />
+
+              {/* <Flag
+                className="icon-size"
+                code="NL"
+                gradient="real-linear"
+                size="l"
+                hasDropShadow
+              /> */}
             </div>
           </div>
 

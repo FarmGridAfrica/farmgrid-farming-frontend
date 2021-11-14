@@ -75,9 +75,9 @@ const Investments = () => {
               <thead>
                 <tr>
                   <th>Farm</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                  <th>ROI%</th>
+                  <th>Amount</th>
+                  <th>Expected Return</th>
+                  <th>APY%</th>
                   <th>Status</th>
                   <th></th>
                 </tr>
@@ -89,9 +89,16 @@ const Investments = () => {
                     key={index}
                   >
                     <td>{_.farm.farmName}</td>
-                    <td>13-01-2022</td>
-                    <td>13-03-2022</td>
-                    <td>{_.farm.returnOfInvestment}%</td>
+                    <td>
+                      {_.amount}
+                      {"(" + "$" + _.dollarEquivalent + ")"}
+                    </td>
+                    <td>
+                      {" "}
+                      {_.expectedReturn}
+                      {"(" + "$" + _.expectedReturnDollar + ")"}
+                    </td>
+                    <td>{_.farm.annualPercentageYield}%</td>
                     <td>
                       <div
                         className={

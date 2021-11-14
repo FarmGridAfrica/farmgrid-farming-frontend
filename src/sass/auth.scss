@@ -1,12 +1,12 @@
 @import "_config";
 
 .auth-form {
-  height: 700px;
+  height: auto;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
   width: 450px;
-  padding: 0 25px;
+  padding: 25px 25px;
 
   .auth-form-h1 {
     color: $dark;
@@ -85,6 +85,15 @@
   }
 }
 
+.on-screen-spinner {
+  width: 40px;
+  margin: 200px auto;
+
+  img {
+    width: 40px;
+  }
+}
+
 //table
 
 #customers {
@@ -114,6 +123,7 @@ th:last-child {
 #customers th {
   border: 1px solid #ddd;
   padding: 15px;
+  font-weight: 400;
 }
 
 #customers tr:nth-child(even) {
@@ -157,4 +167,15 @@ th:last-child {
   border: 2px $primary-color dashed;
   border-radius: 10px;
   text-align: start;
+}
+
+.country-image-size {
+  width: 200px;
+}
+
+.google-sign-up {
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 30px auto;
+  width: 130px;
 }

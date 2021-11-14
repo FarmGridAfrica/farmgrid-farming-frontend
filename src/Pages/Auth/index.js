@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Login from "./Login";
+import Profile from "./Profile";
 import Register from "./Register";
 
 const Auth = ({ match: { path } }) => {
@@ -11,6 +12,9 @@ const Auth = ({ match: { path } }) => {
       </Route>
       <Route path={`${path}/register`}>
         <Register />
+      </Route>
+      <Route path={`${path}/profile`}>
+        <Profile />
       </Route>
     </Switch>
   );

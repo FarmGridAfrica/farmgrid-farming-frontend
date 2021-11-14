@@ -10,6 +10,7 @@ import {
 } from "../../../redux/action";
 import { Navbar } from "../../../Components/navbar";
 import { SubmitBtn } from "../../../Components/button";
+import GoogleLogin from "react-google-login";
 
 const Register = () => {
   const { postReferralSuccess, postReferralError, postReferralLoading, user } =
@@ -54,6 +55,7 @@ const Register = () => {
       firstName: "",
       lastName: "",
       accountNumber: "",
+      bankName: "",
       country: "",
       email: "",
       password: "",
@@ -73,6 +75,15 @@ const Register = () => {
       dispatch(postReferralRequest({ data }));
     },
   });
+
+  const responseGoogle = (response) => {
+    if (response.getAuthResponse().id_token) {
+      history.push({
+        pathname: "/auth/profile",
+        state: { token: response.getAuthResponse().id_token },
+      });
+    }
+  };
 
   return (
     <div className="main-background">
@@ -125,12 +136,22 @@ const Register = () => {
               </select>
             </div>
             <div className="form-control">
-              <label>Account Number</label>
+              <label>Account nmber</label>
               <input
                 type="text"
                 name="accountNumber"
                 {...formik.getFieldProps("accountNumber")}
                 placeholder="Account number"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label>Bank name</label>
+              <input
+                type="text"
+                name="bankName"
+                {...formik.getFieldProps("bankName")}
+                placeholder="Bank name"
                 required
               />
             </div>
@@ -154,6 +175,16 @@ const Register = () => {
               Log in
             </Link>
           </h3>
+          <div className="google-sign-up">
+            <GoogleLogin
+              clientId="1009378875291-qdmhto918d8uksshhh0fp3vbdaafrfi7.apps.googleusercontent.com"
+              buttonText="Sign Up"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+              style={{ fontWeight: 500, fontSize: 20 }}
+            />
+          </div>
         </div>
       </div>
     </div>

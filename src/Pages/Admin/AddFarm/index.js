@@ -40,10 +40,11 @@ const AddFarm = () => {
       photo: "",
       description: "",
       country: "",
-      returnOfInvestment: "",
+      annualPercentageYield: "",
       amount: "",
       startDate: "",
       endDate: "",
+      duration: "",
     },
     validationSchema: yup.object({}),
 
@@ -107,12 +108,12 @@ const AddFarm = () => {
                     />
                   </div>
                   <div className="form-control">
-                    <label>Return of investment(%)</label>
+                    <label>Annual percentage yield(%)</label>
                     <input
                       type="number"
-                      name="returnOfInvestment"
-                      {...formik.getFieldProps("returnOfInvestment")}
-                      placeholder="ROI%"
+                      name="annualPercentageYield"
+                      {...formik.getFieldProps("annualPercentageYield")}
+                      placeholder="APY%"
                       required
                     />
                   </div>
@@ -154,6 +155,15 @@ const AddFarm = () => {
                       type="date"
                       name="endStart"
                       {...formik.getFieldProps("endDate")}
+                      required
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label>Duration(Month)</label>
+                    <input
+                      type="number"
+                      name="duration"
+                      {...formik.getFieldProps("duration")}
                       required
                     />
                   </div>

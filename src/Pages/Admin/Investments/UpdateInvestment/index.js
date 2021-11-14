@@ -109,7 +109,7 @@ const UpdateInvestment = () => {
                     <label>Status</label>
                     <select name="status" {...formik.getFieldProps("status")}>
                       <option value="Active">Active</option>
-                      <option value="Pending">Pending</option>
+                      <option value="Withdrawn">Withdrawn</option>
                       <option value="Completed">Completed</option>
                     </select>
                   </div>
