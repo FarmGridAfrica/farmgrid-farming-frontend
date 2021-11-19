@@ -101,7 +101,7 @@ const UpdateInvestment = () => {
       <div className="container mb-5">
         <div className="formcard mt-3 card">
           <div className="my-2">
-            <h2 className="auth-form-h1 mb-1">Edit investment</h2>
+            <h2 className="auth-form-h1 mb-1">Edit Farm</h2>
             <form onSubmit={formik.handleSubmit}>
               <div className="display-grid-2">
                 <div>
@@ -113,6 +113,29 @@ const UpdateInvestment = () => {
                       <option value="Completed">Completed</option>
                     </select>
                   </div>
+                  {!getInvestmentLoading && (
+                    <div className="card p-1 mt-4 bg-primary color-light">
+                      <h3 className="font-weight-normal font-22">
+                        Farmer details
+                      </h3>
+                      <p className="font-18 text-start">
+                        Name: {investment.user.firstName}{" "}
+                        {investment.user.lastName}
+                      </p>
+                      <p className="font-18 text-start">
+                        Email: {investment.user.email}
+                      </p>
+                      <p className="font-18 text-start">
+                        Country: {investment.user.country}{" "}
+                      </p>
+                      <p className="font-18 text-start">
+                        Bank name: {investment.user.bankName}{" "}
+                      </p>
+                      <p className="font-18 text-start">
+                        Account number: {investment.user.accountNumber}{" "}
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div>

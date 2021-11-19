@@ -62,10 +62,12 @@ const Login = () => {
 
   return (
     <div className="main-background">
-      <Navbar />
-      <div className="showcase-form auth-form mt-4 card">
-        <div>
-          <h1 className="auth-form-h1">Admin Log in</h1>
+      <div
+        className="showcase-form auth-form card"
+        style={{ marginTop: "150px" }}
+      >
+        <div className="my-5">
+          <h1 className="auth-form-h1">Admin log in</h1>
           <form onSubmit={formik.handleSubmit}>
             <div className="form-control">
               <label>Email</label>
@@ -90,13 +92,6 @@ const Login = () => {
 
             <SubmitBtn text="Log in" loading={loginLoading} />
           </form>
-          <h3 className="auth-form-swap">
-            Don't have an account?
-            <Link to="/auth/register" className="account-span">
-              {" "}
-              Register
-            </Link>
-          </h3>
         </div>
       </div>
     </div>

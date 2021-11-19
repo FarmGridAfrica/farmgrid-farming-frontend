@@ -1,17 +1,32 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { UploadForm } from "./Upload";
+import { CircularProgress } from "@material-ui/core";
 
-export const DepositeForm = () => {
+export const DepositeForm = ({ makeMyDeposite, loading }) => {
+  const [amount, setAmount] = useState("0");
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (parseInt(amount) > 1000) {
+      toast.error("Above set fundable value", { duration: 3000 });
+    } else {
+      makeMyDeposite(amount);
+    }
+  };
+
   return (
     <div className="showcase-form mb-2 card">
       <div>
         <h3>Deposite</h3>
-        <form>
+        <form onSubmit={(e) => onSubmit(e)}>
           <div className="form-control">
             <label>Amount</label>
             <input
               type="number"
-              name="telegramUsername"
+              name="amount"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
               placeholder="Amount"
               required
             />
@@ -19,14 +34,12 @@ export const DepositeForm = () => {
 
           <div>
             <button type="submit" className="btn">
-              {false ? (
-                <img
-                  className="loader"
-                  src={"/img/referral/loader.gif"}
-                  alt=""
-                ></img>
+              {loading ? (
+                <div className="text-center">
+                  <CircularProgress color="black" size="20px" />
+                </div>
               ) : (
-                "Invest"
+                "Deposite"
               )}
             </button>
           </div>
@@ -79,17 +92,26 @@ export const FundWalletForm = ({ fund }) => {
   );
 };
 
-export const WithdrawalForm = () => {
+export const WithdrawalForm = ({ makeMyWithdrawal, loading }) => {
+  const [amount, setAmount] = useState("0");
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    makeMyWithdrawal(amount);
+  };
+
   return (
     <div className="showcase-form withdrawal-form card">
       <div>
         <h3>Withdraw</h3>
-        <form>
+        <form onSubmit={(e) => onSubmit(e)}>
           <div className="form-control">
             <label>Amount</label>
             <input
               type="number"
-              name="telegramUsername"
+              name="amount"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
               placeholder="Amount"
               required
             />
@@ -97,12 +119,10 @@ export const WithdrawalForm = () => {
 
           <div>
             <button type="submit" className="btn">
-              {false ? (
-                <img
-                  className="loader"
-                  src={"/img/referral/loader.gif"}
-                  alt=""
-                ></img>
+              {loading ? (
+                <div className="text-center">
+                  <CircularProgress color="black" size="20px" />
+                </div>
               ) : (
                 "Withdraw"
               )}

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { BsFillBellFill } from "react-icons/bs";
 import { getFarmsRequest, logout } from "../redux/action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -57,6 +59,21 @@ export const DashboardNav = () => {
 export const AdminNav = () => {
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
+  const { isLoggedIn } = useSelector((state) => {
+    const { isLoggedIn } = state.userData;
+    return {
+      isLoggedIn,
+    };
+  });
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      history.push("/admin");
+    }
+  }, [isLoggedIn]);
+
   return (
     <div className="navbar-section">
       <nav className="nav-container">
@@ -73,8 +90,11 @@ export const AdminNav = () => {
             Add Farm
           </Link>
 
-          <Link to="/admin/investment" className="nav-links">
-            Investments
+          <Link to="/admin/farms" className="nav-links">
+            Farms
+          </Link>
+          <Link to="/admin/notification" className="nav-links">
+            <BsFillBellFill />
           </Link>
 
           <a onClick={() => dispatch(logout())} className="nav-links">

@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 const Payment = () => {
   const history = useHistory();
 
-  const delay = 10;
+  const delay = 3;
 
   const [show, setShow] = useState(false);
 

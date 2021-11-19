@@ -3,9 +3,9 @@ import protocols from "./addresses.json";
 require("dotenv").config();
 
 const setupSdk = async () => {
-  const chainID = 0; // ganache
+  const chainID = 56; // ganache
   const pk = process.env.REACT_APP_PRIVATE_KEY;
-  return await XF(chainID, pk, { env: "local", protocols });
+  return await XF(chainID, pk, { env: "mainnet" });
 };
 
 export const flexibleInfo = async () => {
@@ -24,23 +24,24 @@ export const getWalletBalance = async () => {
     const xf = await setupSdk();
     const balance = await xf.walletBalance();
     return balance;
+    console.log(balance);
   } catch (e) {
     console.log(e);
     return null;
   }
 };
 
-export const makeDeposit = async () => {
+export const makeDeposit = async (amount) => {
   try {
     const { Personal } = await setupSdk();
-    const result = await Personal.flexibleDeposit("200");
+    const result = await Personal.flexibleDeposit(`${amount}`);
     return result;
   } catch (e) {
     return null;
   }
 };
 
-const doWithdraw = async (amount) => {
+export const doWithdraw = async (amount) => {
   try {
     const { Personal } = await setupSdk();
 

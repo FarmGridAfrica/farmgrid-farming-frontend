@@ -24,7 +24,11 @@ export const getMyAddress = async (
   setActiveAddressLoading
 ) => {
   try {
+    setActiveAddressLoading(true);
     const response = await myAddress();
     setActiveAddress(response);
-  } catch (error) {}
+    setActiveAddressLoading(false);
+  } catch (error) {
+    setActiveAddressLoading(false);
+  }
 };

@@ -60,14 +60,14 @@ const Investments = () => {
   }, [getInvestmentsError]);
 
   const openInvestemt = (_) => {
-    history.replace(`/admin/investment/${_._id}`);
+    history.replace(`/admin/farms/${_._id}`);
   };
 
   return (
     <div>
       <AdminNav />
       <section className="container">
-        <h1 className="invest-heading">My Farms</h1>
+        <h1 className="invest-heading">Farms</h1>
 
         {!getInvestmentsLoading && (
           <div className="investemt-table">

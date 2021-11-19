@@ -10,6 +10,7 @@ const initialState = () => ({
   user: {},
   token: "",
   isLoggedIn: false,
+  users: [],
 });
 
 const authReducer = (state = initialState(), { type, payload }) => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import {
@@ -7,6 +7,7 @@ import {
 } from "../../../redux/action";
 import { DashboardNav } from "../../../Components/navbar";
 import { useHistory } from "react-router";
+import { io } from "socket.io-client";
 
 const Home = () => {
   const history = useHistory();
@@ -67,12 +68,25 @@ const Home = () => {
     }
   }, [getUserInvestmentsError]);
 
-  const withdrawal = (_) => {
-    console.log(_._id);
-    let formData = { status: "Withdrawn" };
-    dispatch(putInvestmentRequest({ formData, id: _._id }));
+  const socket = useRef();
 
-    history.push("/withdraw");
+  useEffect(() => {
+    socket.current = io("http://localhost:5000");
+  }, []);
+
+  const withdrawal = (_) => {
+    // let formData = { status: "Withdrawn" };
+    // dispatch(putInvestmentRequest({ formData, id: _._id }));
+    toast.success("Withdrawal Request Sent", {
+      duration: 3000,
+    });
+
+    socket.current.emit("Withdrawal_request", { id: _._id });
+
+    history.push({
+      pathname: "/withdraw",
+      state: { data: _ },
+    });
   };
 
   return (
@@ -118,6 +132,9 @@ const Home = () => {
                         <div className={"table-btn-active"}>{_.status} </div>
                       )}
                       {_.status == "Withdrawn" && (
+                        <div className={"table-btn-pending"}>{_.status}</div>
+                      )}
+                      {_.status == "Completed" && (
                         <div className={"table-btn-pending"}>{_.status}</div>
                       )}
                     </td>

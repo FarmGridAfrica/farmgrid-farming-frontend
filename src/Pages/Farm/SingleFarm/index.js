@@ -12,6 +12,7 @@ import {
 import { DashboardNav, Navbar } from "../../../Components/navbar";
 import { Link, useParams, useHistory } from "react-router-dom";
 import Flag from "react-flagpack";
+import { CircularProgress } from "@material-ui/core";
 
 const SingleFarm = () => {
   let { id } = useParams();
@@ -126,7 +127,11 @@ const SingleFarm = () => {
   return (
     <div>
       {isLoggedIn ? <DashboardNav /> : <Navbar />}
-      {!getFarmLoading && (
+      {getFarmLoading ? (
+        <div style={{ marginTop: "300px" }} className="text-center">
+          <CircularProgress color="black" size="20px" />
+        </div>
+      ) : (
         <section className="container">
           <div className="display-grid-2">
             <div>
@@ -162,7 +167,12 @@ const SingleFarm = () => {
 
           <div className="display-grid-2">
             <div className="my-2 rounded">
-              <img className="rounded" src={farm.photo} alt="" />
+              <img
+                style={{ maxWidth: "600px", height: "500px" }}
+                className="rounded"
+                src={farm.photo}
+                alt=""
+              />
             </div>
 
             <div className="center-btn">
@@ -185,7 +195,7 @@ const SingleFarm = () => {
                     alt=""
                   ></img>
                 ) : (
-                  "Invest"
+                  "Stake"
                 )}
               </div>
             </div>

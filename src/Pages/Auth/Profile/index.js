@@ -62,8 +62,6 @@ const Profile = () => {
 
       const token = history.location.state.token;
 
-      console.log({ formData, token });
-
       dispatch(googleAuthRequest({ formData, token }));
     },
   });

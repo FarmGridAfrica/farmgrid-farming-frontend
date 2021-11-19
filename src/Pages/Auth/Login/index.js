@@ -71,7 +71,7 @@ const Login = () => {
     <div className="main-background">
       <Navbar />
       <div className="showcase-form auth-form mt-4 card">
-        <div className="py-5">
+        <div className="py-3">
           <h1 className="auth-form-h1">Log in</h1>
           <form onSubmit={formik.handleSubmit}>
             <div className="form-control">
@@ -111,7 +111,6 @@ const Login = () => {
               onSuccess={responseGoogle}
               onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
-              style={{ fontWeight: 500, fontSize: 20 }}
             />
           </div>
         </div>

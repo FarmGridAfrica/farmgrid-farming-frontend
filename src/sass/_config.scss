@@ -30,7 +30,7 @@ $top-bar-background: #eaeaff;
   & > img {
     width: 150%;
     position: absolute;
-    top: 0;
+    top: -50px;
     left: -80px;
     border-radius: 5px;
   }
@@ -307,6 +307,12 @@ input[type="file"] {
 }
 .width-300 {
   width: 300px;
+}
+.width-250 {
+  width: 250px;
+}
+.width-200 {
+  width: 200px;
 }
 
 //background

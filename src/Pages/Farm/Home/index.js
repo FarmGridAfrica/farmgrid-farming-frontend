@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { getFarmsRequest } from "../../../redux/action";
 import { InvestmentCard } from "../../../Components/cards";
 import { DashboardNav, Navbar } from "../../../Components/navbar";
+import { CircularProgress } from "@material-ui/core";
 
 const Home = () => {
   const {
@@ -54,10 +55,14 @@ const Home = () => {
       <section className="invest container">
         <h1 className="invest-heading">Farms</h1>
 
-        {!getFarmsLoading && (
+        {getFarmsLoading ? (
+          <div style={{ marginTop: "300px" }} className="text-center">
+            <CircularProgress color="black" size="20px" />
+          </div>
+        ) : (
           <div className="collection">
             {farms.map((farm) => (
-              <InvestmentCard farm={farm} />
+              <InvestmentCard key={farm._id} farm={farm} />
             ))}
           </div>
         )}

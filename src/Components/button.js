@@ -1,11 +1,14 @@
 import React from "react";
+import { CircularProgress } from "@material-ui/core";
 
 export const SubmitBtn = ({ action, loading, text }) => {
   return (
     <>
       <button type="submit" onClick={action} className="btn">
         {loading ? (
-          <img className="loader" src={"/img/referral/loader.gif"} alt=""></img>
+          <div className="text-center">
+            <CircularProgress color="black" size="20px" />
+          </div>
         ) : text ? (
           text
         ) : (
