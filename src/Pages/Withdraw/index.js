@@ -13,7 +13,6 @@ const Withdraw = () => {
   const [show, setShow] = useState(false);
 
   const data = history.location.state.data;
-  console.log(data);
 
   useEffect(() => {
     let timer1 = setTimeout(() => {

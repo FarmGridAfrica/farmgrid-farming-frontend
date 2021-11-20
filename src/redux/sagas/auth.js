@@ -27,7 +27,6 @@ import {
 const ajaxDBCalls = {
   login: async (data) => {
     if (typeof data === "string" || data instanceof String) {
-      console.log(data);
       const response = await axios.post(`/auth/login/?id=${data}`);
       return response;
     } else {

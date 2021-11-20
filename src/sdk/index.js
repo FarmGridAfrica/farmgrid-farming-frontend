@@ -24,7 +24,6 @@ export const getWalletBalance = async () => {
     const xf = await setupSdk();
     const balance = await xf.walletBalance();
     return balance;
-    console.log(balance);
   } catch (e) {
     console.log(e);
     return null;
@@ -68,42 +67,3 @@ export const myAddress = async () => {
     return null;
   }
 };
-
-async function actions() {
-  const address = await myAddress();
-  console.log("actions with ", address, "\n");
-
-  console.log("balance: ", await getWalletBalance(), "busd\n");
-  console.log("deposit");
-  console.log("\tstart=");
-  await makeDeposit();
-  console.log("\tfinish=\n");
-
-  console.log("balance: ", await getWalletBalance(), "busd\n");
-
-  console.log("wait\n");
-  await waitTime(0.2);
-
-  console.log("* info after deposit *");
-  const info = await flexibleInfo();
-  console.table(info);
-  console.log("\n");
-
-  console.log("wait\n");
-  await waitTime(0.2);
-
-  console.log("withdraw");
-  console.log("\tstart=");
-  await doWithdraw(info.shareBalance);
-  console.log("\tfinish=\n");
-
-  let infoA = await flexibleInfo();
-  console.log("* info after withdrawal *\n");
-  console.table(infoA);
-
-  console.log("balance:", await getWalletBalance(), "busd\n");
-}
-
-async function waitTime(minutes) {
-  return new Promise((resolve) => setTimeout(resolve, minutes * 60 * 1000));
-}

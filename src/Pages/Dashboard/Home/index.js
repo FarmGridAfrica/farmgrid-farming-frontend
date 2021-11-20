@@ -38,6 +38,7 @@ const Home = () => {
       investments,
       isLoggedIn,
       token,
+      user,
     };
   });
 

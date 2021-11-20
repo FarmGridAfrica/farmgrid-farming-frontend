@@ -57,7 +57,7 @@ const Home = () => {
 
         {getFarmsLoading ? (
           <div style={{ marginTop: "300px" }} className="text-center">
-            <CircularProgress color="black" size="20px" />
+            <CircularProgress size="20px" />
           </div>
         ) : (
           <div className="collection">
