@@ -97,7 +97,7 @@ const Dashboard = () => {
             </div>
           ) : (
             <>
-              <h3 className="font-20">
+              <h3 className="font-20" style={{ overflow: "hidden" }}>
                 Custodian Wallet Address:{" "}
                 <span className="font-weight-normal font-20">
                   {activeAddress}
@@ -109,7 +109,7 @@ const Dashboard = () => {
       </div>
 
       <div className="container admin-dashboard">
-        <div className="balance">
+        <div className="balance mb-2">
           <div className="card wallet-balance">
             {accountBalanceLoading ? (
               <div className=" text-center mt-2">
@@ -151,7 +151,7 @@ const Dashboard = () => {
             )}
           </div>
         </div>
-        <div>
+        <div className="mb-2">
           {/* <FundWalletForm fund={fund} /> */}
           <DepositeForm makeMyDeposite={makeMyDeposite} loading={loading} />
           <WithdrawalForm

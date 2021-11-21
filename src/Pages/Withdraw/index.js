@@ -77,7 +77,7 @@ const Withdraw = () => {
       <DashboardNav />
 
       <>
-        <div className="container payment p-2 mt-3">
+        <div className="container payment p-2 m-3">
           <h3 className="font-20 text-start mb-1">
             Withdrawal request received, the account below will be credited
           </h3>

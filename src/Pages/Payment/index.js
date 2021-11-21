@@ -52,7 +52,7 @@ const Payment = () => {
       <DashboardNav />
       {show ? (
         <>
-          <div className="container payment p-2 mt-3">
+          <div className="container payment p-2 m-3">
             <h3 className="font-20 text-start mb-1">
               Proceed to make payment to the bank account provided below
             </h3>

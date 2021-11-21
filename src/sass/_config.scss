@@ -323,3 +323,19 @@ input[type="file"] {
 .color-light {
   color: $light;
 }
+
+@media (max-width: 500px) {
+  //display
+  .display-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+
+  .width-500 {
+    width: 320px;
+  }
+  .width-400 {
+    width: 320px;
+  }
+}

@@ -154,22 +154,13 @@ const SingleFarm = () => {
                 src={`/img/flag/${farm.country}.png`}
                 alt=""
               />
-
-              {/* <Flag
-                className="icon-size"
-                code="NL"
-                gradient="real-linear"
-                size="l"
-                hasDropShadow
-              /> */}
             </div>
           </div>
 
           <div className="display-grid-2">
             <div className="my-2 rounded">
               <img
-                style={{ maxWidth: "600px", height: "500px" }}
-                className="rounded"
+                className="rounded farm-single-image"
                 src={farm.photo}
                 alt=""
               />

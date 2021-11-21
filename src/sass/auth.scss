@@ -1,5 +1,83 @@
 @import "_config";
 
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.navbar-section {
+  height: 100px;
+  background: $primary;
+  width: 100%;
+  box-shadow: 0px 4px 4px rgba(189, 189, 189, 0.2);
+  margin-top: -10px;
+  padding-top: 10px;
+}
+
+.navbar-content {
+  display: grid;
+  grid-template-columns: 1fr auto 9fr;
+  align-items: center;
+  justify-items: center;
+  margin-top: 20px;
+
+  & > a:hover {
+    text-decoration: none;
+  }
+}
+
+.logo {
+  z-index: 4;
+  height: 50px;
+}
+
+.nav-menu {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-column-gap: 50px;
+  list-style: none;
+  top: 10px;
+  justify-self: end;
+  align-self: center;
+}
+
+.nav-links {
+  color: $light;
+  text-decoration: none;
+  font-size: 22px;
+  transition: all 0.2s ease-out;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    background: $secondary-color;
+    margin: 35px 0;
+    left: 40%;
+    width: 100%;
+    border-radius: 13px;
+    height: 6px;
+    opacity: 0;
+  }
+}
+
+.nav-links.active {
+  position: relative;
+  font-weight: bold;
+  &::after {
+    content: "";
+    position: absolute;
+    background: $primary-color;
+    margin: 35px auto;
+    width: 12px;
+    border-radius: 50%;
+    height: 12px;
+    opacity: 1;
+  }
+}
+
 .auth-form {
   height: auto;
   display: grid;
@@ -23,42 +101,6 @@
       color: $primary-color;
       cursor: pointer;
       text-decoration: none;
-    }
-  }
-}
-
-.navbar-section {
-  height: 80px;
-  background-color: $primary;
-
-  .nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    height: 80px;
-  }
-
-  .nav-menu {
-    display: flex;
-    gap: 50px;
-    align-self: center;
-    list-style: none;
-  }
-
-  .nav-links {
-    color: $light;
-    text-decoration: none;
-    font-size: 20px;
-    cursor: pointer;
-  }
-
-  .logo {
-    cursor: pointer;
-    img {
-      width: 200px;
     }
   }
 }
@@ -178,4 +220,134 @@ th:last-child {
   font-weight: bold;
   margin: 30px auto;
   width: 130px;
+}
+
+.farm-single-image {
+  max-width: 500px;
+  height: 500px;
+}
+
+// Tablets & Small Laptops
+@media (max-width: 500px) {
+  #mobile-menu {
+    position: absolute;
+    top: 10px;
+    left: 90%;
+    cursor: pointer;
+  }
+  .menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background: $light;
+    position: relative;
+    top: 10px;
+    display: block;
+    z-index: 2;
+    border-radius: 20px;
+  }
+
+  #mobile-menu.is-active .bar {
+    background-color: $light;
+  }
+
+  #mobile-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  #mobile-menu.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #mobile-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .menu-toggle {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .navbar-section {
+    height: 80px;
+    background: $primary;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(189, 189, 189, 0.2);
+    margin-top: -15px;
+    padding-top: 2px;
+  }
+  .nav-menu {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    list-style: none;
+    top: 10px;
+    justify-self: end;
+    align-self: center;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    background-color: $primary;
+    padding-top: 130px;
+    padding-left: 20px;
+    height: 100vh;
+    opacity: 0;
+  }
+
+  .nav-menu.is-active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .nav-links {
+    color: $light;
+    text-decoration: none;
+    font-size: 22px;
+    transition: all 0.2s ease-out;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background: $light;
+      left: 0px;
+      margin: 0px;
+      padding: 0px;
+      border-radius: 0px;
+      height: 0px;
+      transition: none;
+      opacity: 1;
+    }
+  }
+
+  .nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .collection {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 10px;
+  }
+
+  .farm-single-image {
+    width: 320px;
+    height: 200px;
+  }
+
+  .investemt-table {
+    overflow-x: scroll;
+    width: 320px;
+    border-radius: 10px;
+  }
+
+  .auth-form {
+    width: 320px;
+    padding: 25px 10px;
+  }
 }
