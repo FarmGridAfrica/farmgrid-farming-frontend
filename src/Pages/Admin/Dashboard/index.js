@@ -93,7 +93,7 @@ const Dashboard = () => {
         <div className="card p-1 my-2">
           {activeAddressLoading ? (
             <div className=" text-center">
-              <CircularProgress color="black" size="20px" />
+              <CircularProgress color="success" size="20px" />
             </div>
           ) : (
             <>
@@ -113,7 +113,7 @@ const Dashboard = () => {
           <div className="card wallet-balance">
             {accountBalanceLoading ? (
               <div className=" text-center mt-2">
-                <CircularProgress color="black" size="20px" />
+                <CircularProgress color="success" size="20px" />
               </div>
             ) : (
               <>
@@ -127,7 +127,7 @@ const Dashboard = () => {
           <div className="card invested-balance my-1">
             {getInfoLoading ? (
               <div className=" text-center mt-2">
-                <CircularProgress color="black" size="20px" />
+                <CircularProgress color="success" size="20px" />
               </div>
             ) : (
               <>
@@ -139,7 +139,7 @@ const Dashboard = () => {
           <div className="card wallet-balance">
             {getInfoLoading ? (
               <div className=" text-center mt-2">
-                <CircularProgress color="black" size="20px" />
+                <CircularProgress color="success" size="20px" />
               </div>
             ) : (
               <>

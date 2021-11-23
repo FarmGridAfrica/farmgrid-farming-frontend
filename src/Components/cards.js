@@ -1,33 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FcLock } from "react-icons/fc";
 
 export const InvestmentCard = ({ farm }) => {
   const [flag, setFlag] = useState("");
 
   useEffect(() => {
-    if (farm.country == "South Africa") {
-      setFlag("ZA");
-    } else if (farm.country == "Kenya") {
-      setFlag("KE");
-    } else {
-      setFlag("NG");
-    }
-  }, [farm]);
-
+    setFlag(farm.country.split(" ").join(""));
+  }, []);
   return (
     <div className="card my-2">
+      <div className="card-label">
+        <FcLock className="icon" />
+        <p>Decentralized and offline insured</p>
+      </div>
       <div className="sqaure-image">
         <img src={farm.photo ? farm.photo : "/img/auth/farm.jpg"} />
       </div>
 
       <div className="m-1">
-        <div className="display-grid-2">
+        <div style={{ display: "grid", gridTemplateColumns: "4fr 1fr" }}>
           <div style={{ display: "flex" }}>
             <h3 className="font-weight-normal">{farm.farmName} </h3>
             <img
               className="rounded country-image-size"
-              src={`/img/flagicon/${farm.country}.png`}
-              style={{ width: "30px" }}
+              src={`/img/flagicon/${flag}.png`}
+              style={{ width: "30px", marginLeft: "5px" }}
             />
           </div>
 

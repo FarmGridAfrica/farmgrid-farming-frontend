@@ -13,6 +13,7 @@ import { DashboardNav, Navbar } from "../../../Components/navbar";
 import { Link, useParams, useHistory } from "react-router-dom";
 import Flag from "react-flagpack";
 import { CircularProgress } from "@material-ui/core";
+import CurrencyFormat from "react-currency-format";
 
 const SingleFarm = () => {
   let { id } = useParams();
@@ -64,20 +65,20 @@ const SingleFarm = () => {
     dispatch(getFarmRequest(id));
   }, [getFarmRequest]);
 
-  const [amount, setAmount] = useState(null);
+  const [amount, setAmount] = useState("");
 
   useEffect(() => {
     if (!getFarmLoading) {
       let amount = "";
 
       if (farm.country == "Kenya") {
-        amount = farm.amount + "KSh";
-        setAmount(amount);
+        amount = "KES";
+        amount = setAmount(amount);
       } else if (farm.country == "South Africa") {
-        amount = "R" + farm.amount;
+        amount = "R";
         setAmount(amount);
       } else {
-        amount = "₦" + farm.amount;
+        amount = "₦";
         setAmount(amount);
       }
     }
@@ -124,12 +125,20 @@ const SingleFarm = () => {
     }
   };
 
+  const [flag, setFlag] = useState("");
+
+  useEffect(() => {
+    if (!getFarmLoading) {
+      setFlag(farm.country.split(" ").join(""));
+    }
+  }, [getFarmLoading]);
+
   return (
     <div>
       {isLoggedIn ? <DashboardNav /> : <Navbar />}
       {getFarmLoading ? (
         <div style={{ marginTop: "300px" }} className="text-center">
-          <CircularProgress color="black" size="20px" />
+          <CircularProgress color="success" size="20px" />
         </div>
       ) : (
         <section className="container">
@@ -141,31 +150,38 @@ const SingleFarm = () => {
                 <p className="font-20 text-start">
                   Annual percentage yield: {farm.annualPercentageYield}%
                 </p>
-                <p className="font-20 text-start">Amount: {amount}</p>
+                <p className="font-20 text-start">
+                  Amount:{" "}
+                  <CurrencyFormat
+                    value={farm.amount}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={`${amount}`}
+                  />
+                </p>
                 <p className="font-20 text-start">
                   Duration: {farm.duration} months
                 </p>
-                <p className="font-20 text-start">Location: {farm.country}</p>
+                <div style={{ display: "flex" }}>
+                  <p className="font-20 text-start">Location: {farm.country}</p>{" "}
+                  <img
+                    className="rounded country-image-size"
+                    src={`/img/flagicon/${flag}.png`}
+                    style={{ width: "30px", marginLeft: "5px" }}
+                  />
+                </div>
               </div>
             </div>
             <div className="mt-4 justify-self-center">
-              <img
-                className="rounded country-image-size"
-                src={`/img/flag/${farm.country}.png`}
-                alt=""
-              />
-            </div>
-          </div>
-
-          <div className="display-grid-2">
-            <div className="my-2 rounded">
               <img
                 className="rounded farm-single-image"
                 src={farm.photo}
                 alt=""
               />
             </div>
+          </div>
 
+          <div>
             <div className="center-btn">
               <div className="form-control">
                 <label>Enter Unit</label>

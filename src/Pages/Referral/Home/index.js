@@ -17,7 +17,7 @@ function useQuery() {
 
 const Home = () => {
   const { getweb3 } = Walletmodel();
-  const [myWeb3, setMyWeb3] = useState();
+  const [myWeb3, setMyWeb3] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const connectWallet = async () => {
@@ -81,7 +81,11 @@ const Home = () => {
 
       let refId = query.get("refId");
 
-      dispatch(postReferralRequest({ formData, refId }));
+      console.log(formData);
+
+      const isSignup = false;
+
+      dispatch(postReferralRequest({ data: { formData, isSignup }, refId }));
     },
   });
 

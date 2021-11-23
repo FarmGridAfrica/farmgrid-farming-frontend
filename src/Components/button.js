@@ -7,7 +7,7 @@ export const SubmitBtn = ({ action, loading, text }) => {
       <button type="submit" onClick={action} className="btn">
         {loading ? (
           <div className="text-center">
-            <CircularProgress color="black" size="20px" />
+            <CircularProgress color="success" size="20px" />
           </div>
         ) : text ? (
           text

@@ -4,6 +4,8 @@ import toast from "react-hot-toast";
 import { getInvestmentsRequest } from "../../../../redux/action";
 import { AdminNav, DashboardNav } from "../../../../Components/navbar";
 import { useHistory } from "react-router";
+import CurrencyFormat from "react-currency-format";
+import { CircularProgress } from "@material-ui/core";
 
 const Investments = () => {
   const history = useHistory();
@@ -69,8 +71,12 @@ const Investments = () => {
       <section className="container">
         <h1 className="invest-heading">Farms</h1>
 
-        {!getInvestmentsLoading && (
-          <div className="investemt-table">
+        {getInvestmentsLoading ? (
+          <div style={{ marginTop: "300px" }} className="text-center">
+            <CircularProgress color="success" size="20px" />
+          </div>
+        ) : (
+          <div className="investemt-table mb-5">
             <table id="customers">
               <thead>
                 <tr>
@@ -85,18 +91,39 @@ const Investments = () => {
               <tbody>
                 {investments.map((_, index) => (
                   <tr
-                    className={invmLength == index && "last-child"}
+                    className={invmLength == index ? "last-child" : ""}
                     key={index}
                   >
                     <td>{_.farm.farmName}</td>
                     <td>
-                      {_.amount}
-                      {"(" + "$" + _.dollarEquivalent + ")"}
+                      <CurrencyFormat
+                        value={_.amount}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                      />
+                      (
+                      <CurrencyFormat
+                        value={_.dollarEquivalent}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={`$`}
+                      />
+                      )
                     </td>
                     <td>
-                      {" "}
-                      {_.expectedReturn}
-                      {"(" + "$" + _.expectedReturnDollar + ")"}
+                      <CurrencyFormat
+                        value={_.expectedReturn}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                      />
+                      (
+                      <CurrencyFormat
+                        value={_.expectedReturnDollar}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={`$`}
+                      />
+                      )
                     </td>
                     <td>{_.farm.annualPercentageYield}%</td>
                     <td>

@@ -36,7 +36,7 @@ export const DepositeForm = ({ makeMyDeposite, loading }) => {
             <button type="submit" className="btn">
               {loading ? (
                 <div className="text-center">
-                  <CircularProgress color="black" size="20px" />
+                  <CircularProgress color="success" size="20px" />
                 </div>
               ) : (
                 "Deposite"
@@ -121,7 +121,7 @@ export const WithdrawalForm = ({ makeMyWithdrawal, loading }) => {
             <button type="submit" className="btn">
               {loading ? (
                 <div className="text-center">
-                  <CircularProgress color="black" size="20px" />
+                  <CircularProgress color="success" size="20px" />
                 </div>
               ) : (
                 "Withdraw"

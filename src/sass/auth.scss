@@ -223,8 +223,8 @@ th:last-child {
 }
 
 .farm-single-image {
-  max-width: 500px;
-  height: 500px;
+  max-width: 400px;
+  max-height: 400px;
 }
 
 // Tablets & Small Laptops
@@ -244,7 +244,7 @@ th:last-child {
     position: relative;
     top: 10px;
     display: block;
-    z-index: 2;
+    z-index: 3;
     border-radius: 20px;
   }
 
@@ -295,11 +295,12 @@ th:last-child {
     padding-left: 20px;
     height: 100vh;
     opacity: 0;
+    z-index: -1;
   }
 
   .nav-menu.is-active {
     opacity: 1;
-    z-index: 1;
+    z-index: 2;
   }
 
   .nav-links {
@@ -337,7 +338,7 @@ th:last-child {
 
   .farm-single-image {
     width: 320px;
-    height: 200px;
+    max-height: 200px;
   }
 
   .investemt-table {

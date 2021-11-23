@@ -20,6 +20,29 @@ body {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.card-label {
+  right: 5px;
+  top: 5px;
+  position: absolute;
+  height: auto;
+  width: 260px;
+  background-color: #e7ffdf;
+  z-index: 1;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  padding: 2px;
+
+  .icon {
+    font-size: 25px;
+  }
+  p {
+    text-align: justify;
+    align-self: center;
+  }
 }
 
 .main-background {

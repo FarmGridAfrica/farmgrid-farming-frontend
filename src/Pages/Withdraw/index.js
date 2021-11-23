@@ -96,7 +96,7 @@ const Withdraw = () => {
         <div className="center-btn">
           <div onClick={onClick} className="btn-medium">
             {confirm ? (
-              <CircularProgress color="black" size="20px" />
+              <CircularProgress color="success" size="20px" />
             ) : (
               "Confirm"
             )}

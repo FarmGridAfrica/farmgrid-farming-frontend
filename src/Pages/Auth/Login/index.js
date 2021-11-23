@@ -107,7 +107,7 @@ const Login = () => {
           <div className="google-sign-up">
             <GoogleLogin
               clientId="1009378875291-qdmhto918d8uksshhh0fp3vbdaafrfi7.apps.googleusercontent.com"
-              buttonText="Sign Up"
+              buttonText="Sign In"
               onSuccess={responseGoogle}
               onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}

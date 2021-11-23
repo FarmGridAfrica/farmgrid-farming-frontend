@@ -8,6 +8,8 @@ import {
 import { DashboardNav } from "../../../Components/navbar";
 import { useHistory } from "react-router";
 import { io } from "socket.io-client";
+import CurrencyFormat from "react-currency-format";
+import { CircularProgress } from "@material-ui/core";
 
 const Home = () => {
   const history = useHistory();
@@ -90,13 +92,19 @@ const Home = () => {
     });
   };
 
+  const [amount, setAmount] = useState("");
+
   return (
     <div>
       <DashboardNav />
       <section className="container">
         <h1 className="invest-heading">My Farms</h1>
 
-        {!getUserInvestmentsLoading && (
+        {getUserInvestmentsLoading ? (
+          <div style={{ marginTop: "300px" }} className="text-center">
+            <CircularProgress color="success" size="20px" />
+          </div>
+        ) : (
           <div className="investemt-table">
             <table id="customers">
               <thead>
@@ -118,13 +126,34 @@ const Home = () => {
                   >
                     <td>{_.farm.farmName}</td>
                     <td>
-                      {_.amount}
-                      {"(" + "$" + _.dollarEquivalent + ")"}
+                      <CurrencyFormat
+                        value={_.amount}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                      />
+                      (
+                      <CurrencyFormat
+                        value={_.dollarEquivalent}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={`$`}
+                      />
+                      )
                     </td>
                     <td>
-                      {" "}
-                      {_.expectedReturn}
-                      {"(" + "$" + _.expectedReturnDollar + ")"}
+                      <CurrencyFormat
+                        value={_.expectedReturn}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                      />
+                      (
+                      <CurrencyFormat
+                        value={_.expectedReturnDollar}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={`$`}
+                      />
+                      )
                     </td>
                     <td>{_.farm.annualPercentageYield}%</td>
                     <td>{_.farm.duration} months</td>

@@ -56,21 +56,17 @@ export default function Walletmodel() {
 
       provider.on("error", (e) => {
         setLoading(false);
-        console.error("WS Error", e);
       });
 
       provider.on("end", (e) => {
         setLoading(false);
-        console.error("WS End", e);
       });
 
       provider.on("disconnect", (error) => {
-        console.log(error);
         setLoading(false);
       });
 
       provider.on("connect", (info) => {
-        console.log(info);
         setLoading(false);
       });
 
