@@ -3,6 +3,7 @@ import { AdminNav } from "../../../Components/navbar";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { io } from "socket.io-client";
+import { BASE_URL, BASE_URL_SOCKET } from "../../../redux/sagas/axios";
 
 const Notification = () => {
   const history = useHistory();
@@ -12,7 +13,7 @@ const Notification = () => {
   const [withdrawals, setWithdrawals] = useState([]);
 
   useEffect(() => {
-    socket.current = io("http://localhost:5000");
+    socket.current = io(BASE_URL_SOCKET);
   }, []);
 
   useEffect(() => {

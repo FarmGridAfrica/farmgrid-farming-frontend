@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { DashboardNav } from "../../Components/navbar";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router";
+import { CircularProgress } from "@material-ui/core";
 
 const Payment = () => {
   const history = useHistory();
@@ -52,41 +53,33 @@ const Payment = () => {
       <DashboardNav />
       {show ? (
         <>
-          <div className="container payment p-2 m-3">
-            <h3 className="font-20 text-start mb-1">
-              Proceed to make payment to the bank account provided below
-            </h3>
-            <p className="font-22  text-start ">Account Name: Martin Nello</p>
-            <p className="font-22  text-start">Account Number: 0085537210</p>
-            <p className="font-22  text-start">Bank Name: Bank of africa</p>
-            <h3 className="font-20 text-start mt-1">
-              Click on confirm button below after making payment
-            </h3>
-          </div>
+          <div className="m-2">
+            <div className="container payment">
+              <h3 className="font-20 text-start mb-1">
+                Proceed to make payment to the bank account provided below
+              </h3>
+              <p className="font-22  text-start ">Account Name: Martin Nello</p>
+              <p className="font-22  text-start">Account Number: 0085537210</p>
+              <p className="font-22  text-start">Bank Name: Bank of africa</p>
+              <h3 className="font-20 text-start mt-1">
+                Click on confirm button below after making payment
+              </h3>
+            </div>
 
-          <div className="center-btn">
-            <div onClick={() => onClick()} className="btn-medium">
-              {confirm ? (
-                <img
-                  className="loader"
-                  src={"/img/referral/loader.gif"}
-                  alt=""
-                ></img>
-              ) : (
-                "Confirm"
-              )}
+            <div className="center-btn">
+              <div onClick={() => onClick()} className="btn-medium">
+                {confirm ? (
+                  <CircularProgress color="success" size="20px" />
+                ) : (
+                  "Confirm"
+                )}
+              </div>
             </div>
           </div>
         </>
       ) : (
-        <div className="container">
-          <div className="on-screen-spinner">
-            <img
-              className="loader"
-              src={"/img/spinner/spinner.gif"}
-              alt=""
-            ></img>
-          </div>
+        <div style={{ marginTop: "300px" }} className="text-center">
+          <CircularProgress size="20px" />
         </div>
       )}
     </div>

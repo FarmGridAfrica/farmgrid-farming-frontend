@@ -12,8 +12,6 @@ const Withdraw = () => {
 
   const [show, setShow] = useState(false);
 
-  const data = history.location.state.data;
-
   useEffect(() => {
     let timer1 = setTimeout(() => {
       setShow(true);
@@ -77,29 +75,31 @@ const Withdraw = () => {
       <DashboardNav />
 
       <>
-        <div className="container payment p-2 m-3">
-          <h3 className="font-20 text-start mb-1">
-            Withdrawal request received, the account below will be credited
-          </h3>
-          <p className="font-22  text-start ">
-            Account Name: {user.firstName} {user.lastName}
-          </p>
-          <p className="font-22  text-start">
-            Account Number: {user.accountNumber}
-          </p>
-          <p className="font-22  text-start">Bank Name: {user.bankName}</p>
-          <h3 className="font-20 text-start mt-1">
-            Click on confirm button below after receiving credit
-          </h3>
-        </div>
+        <div className="m-2">
+          <div className="container payment">
+            <h3 className="font-20 text-start mb-1">
+              Withdrawal request received, the account below will be credited
+            </h3>
+            <p className="font-22  text-start ">
+              Account Name: {user.firstName} {user.lastName}
+            </p>
+            <p className="font-22  text-start">
+              Account Number: {user.accountNumber}
+            </p>
+            <p className="font-22  text-start">Bank Name: {user.bankName}</p>
+            <h3 className="font-20 text-start mt-1">
+              Click on confirm button below after receiving credit
+            </h3>
+          </div>
 
-        <div className="center-btn">
-          <div onClick={onClick} className="btn-medium">
-            {confirm ? (
-              <CircularProgress color="success" size="20px" />
-            ) : (
-              "Confirm"
-            )}
+          <div className="center-btn">
+            <div onClick={onClick} className="btn-medium">
+              {confirm ? (
+                <CircularProgress color="success" size="20px" />
+              ) : (
+                "Confirm"
+              )}
+            </div>
           </div>
         </div>
       </>

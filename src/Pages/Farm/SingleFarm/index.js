@@ -196,11 +196,7 @@ const SingleFarm = () => {
               </div>
               <div onClick={() => invest()} className="btn-medium">
                 {postCreateInvestmentLoading ? (
-                  <img
-                    className="loader"
-                    src={"/img/referral/loader.gif"}
-                    alt=""
-                  ></img>
+                  <CircularProgress color="success" size="20px" />
                 ) : (
                   "Stake"
                 )}

@@ -10,6 +10,7 @@ import { useHistory } from "react-router";
 import { io } from "socket.io-client";
 import CurrencyFormat from "react-currency-format";
 import { CircularProgress } from "@material-ui/core";
+import { BASE_URL, BASE_URL_SOCKET } from "../../../redux/sagas/axios";
 
 const Home = () => {
   const history = useHistory();
@@ -74,7 +75,7 @@ const Home = () => {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current = io("http://localhost:5000");
+    socket.current = io(BASE_URL_SOCKET);
   }, []);
 
   const withdrawal = (_) => {

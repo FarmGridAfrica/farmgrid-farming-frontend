@@ -2,6 +2,7 @@ import axios from "axios";
 import { store } from "../store";
 import { logout, dispatchError } from "../action";
 
+export const BASE_URL_SOCKET = "https://farmgrid-referral-api.herokuapp.com";
 export const BASE_URL = "https://farmgrid-referral-api.herokuapp.com/api/v1/";
 export const BASE_URL_DEV = "http://localhost:5000/api/v1";
 

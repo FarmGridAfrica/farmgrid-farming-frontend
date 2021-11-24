@@ -107,7 +107,7 @@ export const Heading = ({ user }) => {
       <img src={`/img/referral/logo.png`} alt="farm grid logo"></img>
       <h2>Referal</h2>
       <p>
-        27,200,000 $GRID Token Airdropped, refer your friends to participate{" "}
+        2,720,000 $GRID Token Airdropped, refer your friends to participate
         <a
           href="https://medium.com/@grid.farmgrid/farm-grid-referral-airdrop-7dbc6e29a552"
           target="_blank"
