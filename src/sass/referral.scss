@@ -47,11 +47,11 @@ body {
 
 .main-background {
   background-color: #e7ffdf;
-  height: 1100px;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   overflow-y: scroll; /* Add the ability to scroll */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  height: 100vh;
 }
 .main-background::-webkit-scrollbar {
   display: none;

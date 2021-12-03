@@ -73,6 +73,7 @@ const Home = () => {
       facebookUsername: "",
       twitterUsername: "",
       instagramUsername: "",
+      youtubeUsername: "",
     },
     validationSchema: yup.object({}),
 
@@ -109,7 +110,7 @@ const Home = () => {
 
   return (
     <div className="main-background">
-      <div className="showcase-form mt-4 card">
+      <div className="showcase-form mt-4 mb-4 card">
         <Heading />
         <form onSubmit={formik.handleSubmit}>
           <div className="form-control">
@@ -213,6 +214,23 @@ const Home = () => {
               type="text"
               name="instagramUsername"
               {...formik.getFieldProps("instagramUsername")}
+              placeholder="instagram username"
+            />
+          </div>
+          <div className="form-control">
+            <div className="label-div">
+              <label>Youtube username</label>
+              <a
+                href="https://www.youtube.com/channel/UCIoPcYfOHV1rHtoNhi5zNmA"
+                target="_blank"
+              >
+                Click to follow
+              </a>
+            </div>
+            <input
+              type="text"
+              name="instagramUsername"
+              {...formik.getFieldProps("youtubeUsername")}
               placeholder="instagram username"
             />
           </div>

@@ -1,7 +1,12 @@
 import React from "react";
-// eslint-disable-next-line
-import { SocialMediaIconsReact } from "social-media-icons-react"; // @ts-ignore
-import { FaTelegram } from "react-icons/fa";
+import {
+  FaTelegram,
+  FaYoutube,
+  FaReddit,
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+} from "react-icons/fa";
 import { SiMedium } from "react-icons/si";
 import toast from "react-hot-toast";
 
@@ -14,56 +19,31 @@ export const Icons = () => {
         media channels. Follow, like and share!
       </p>
       <div className="icon">
-        <SocialMediaIconsReact
-          roundness={50}
-          borderColor="#212529"
-          icon="facebook"
-          iconColor="rgba(255,255,255,1)"
-          backgroundColor="#212529"
-          url="https://web.facebook.com/farmgrid"
-          size="38"
-        />
-        <SocialMediaIconsReact
-          roundness={50}
-          borderColor="#212529"
-          icon="twitter"
-          iconColor="rgba(255,255,255,1)"
-          backgroundColor="#212529"
-          url="https://twitter.com/FarmGridAfrica"
-          size="38"
-        />
-        <SocialMediaIconsReact
-          roundness={50}
-          borderColor="#212529"
-          icon="instagram"
-          iconColor="rgba(255,255,255,1)"
-          backgroundColor="#212529"
-          url="https://instagram.com/farmgrid"
-          size="38"
-        />
-        <SocialMediaIconsReact
-          roundness={50}
-          borderColor="#212529"
-          icon="reddit"
-          iconColor="rgba(255,255,255,1)"
-          backgroundColor="#212529"
-          url="https://www.reddit.com/u/farmgrid"
-          size="38"
-        />
+        <a href="https://web.facebook.com/farmgrid" target="_blank">
+          <FaFacebook className="react-icon" />
+        </a>
+        <a href="https://twitter.com/FarmGridAfrica" target="_blank">
+          <FaTwitter className="react-icon" />
+        </a>
+
+        <a href="https://instagram.com/farmgrid" target="_blank">
+          <FaInstagram className="react-icon" />
+        </a>
+
+        <a href="hhttps://www.reddit.com/u/farmgrid" target="_blank">
+          <FaReddit className="react-icon" />
+        </a>
 
         <a href="https://t.me/farmgrid" target="_blank">
           <FaTelegram className="react-icon" />
         </a>
+        <a
+          href="https://www.youtube.com/channel/UCIoPcYfOHV1rHtoNhi5zNmA"
+          target="_blank"
+        >
+          <FaYoutube className="react-icon" />
+        </a>
 
-        <SocialMediaIconsReact
-          roundness={50}
-          borderColor="#212529"
-          icon="youtube"
-          iconColor="rgba(255,255,255,1)"
-          backgroundColor="#212529"
-          url="https://www.youtube.com/channel/UCIoPcYfOHV1rHtoNhi5zNmA"
-          size="38"
-        />
         <a href="http://farmgrid.medium.com" target="_blank">
           <SiMedium className="react-icon" />
         </a>
@@ -107,7 +87,8 @@ export const Heading = ({ user }) => {
       <img src={`/img/referral/logo.png`} alt="farm grid logo"></img>
       <h2>Referal</h2>
       <p>
-        2,720,000 $GRID Token Airdropped, refer your friends to participate
+        2,720,000 $GRID Token worth $51,000 Airdropped, refer your friends to
+        participate{" "}
         <a
           href="https://medium.com/@grid.farmgrid/farm-grid-referral-airdrop-7dbc6e29a552"
           target="_blank"

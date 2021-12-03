@@ -88,7 +88,7 @@ const Register = () => {
   return (
     <div className="main-background">
       <Navbar />
-      <div className="showcase-form auth-form mt-4 card">
+      <div className="showcase-form auth-form mt-4 mb-4 card">
         <div>
           <h1 className="auth-form-h1">Register</h1>
           <form onSubmit={formik.handleSubmit}>
