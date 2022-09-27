@@ -22,7 +22,7 @@ export const Icons = () => {
         <a href="https://web.facebook.com/farmgrid" target="_blank">
           <FaFacebook className="react-icon" />
         </a>
-        <a href="https://twitter.com/FarmGridAfrica" target="_blank">
+        <a href="https://twitter.com/FarmGriddao" target="_blank">
           <FaTwitter className="react-icon" />
         </a>
 
@@ -34,7 +34,7 @@ export const Icons = () => {
           <FaReddit className="react-icon" />
         </a>
 
-        <a href="https://t.me/farmgrid" target="_blank">
+        <a href="https://t.me/farmgridafrica" target="_blank">
           <FaTelegram className="react-icon" />
         </a>
         <a

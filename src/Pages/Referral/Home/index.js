@@ -160,9 +160,9 @@ const Home = () => {
           <div className="form-control">
             <div className="label-div">
               <label>Telegram username</label>
-              <a href="https://t.me/farmgrid" target="_blank">
+              {/* <a href="https://t.me/farmgridafrica" target="_blank">
                 Click to follow
-              </a>
+              </a> */}
             </div>
             <input
               type="text"
@@ -175,9 +175,9 @@ const Home = () => {
           <div className="form-control">
             <div className="label-div">
               <label>Facebook username</label>
-              <a href="https://web.facebook.com/farmgrid" target="_blank">
+              {/* <a href="https://web.facebook.com/farmgrid" target="_blank">
                 Click to follow
-              </a>
+              </a> */}
             </div>
             <input
               type="text"
@@ -191,9 +191,9 @@ const Home = () => {
           <div className="form-control">
             <div className="label-div">
               <label>Twitter username</label>
-              <a href="https://twitter.com/FarmGridAfrica" target="_blank">
+              {/* <a href="https://twitter.com/FarmGriddao" target="_blank">
                 Click to follow
-              </a>
+              </a> */}
             </div>
 
             <input
@@ -206,9 +206,9 @@ const Home = () => {
           <div className="form-control">
             <div className="label-div">
               <label>Instagram username</label>
-              <a href="https://instagram.com/farmgrid" target="_blank">
+              {/* <a href="https://instagram.com/farmgrid" target="_blank">
                 Click to follow
-              </a>
+              </a> */}
             </div>
             <input
               type="text"
@@ -220,12 +220,12 @@ const Home = () => {
           <div className="form-control">
             <div className="label-div">
               <label>Youtube username</label>
-              <a
+              {/* <a
                 href="https://www.youtube.com/channel/UCIoPcYfOHV1rHtoNhi5zNmA"
                 target="_blank"
               >
                 Click to follow
-              </a>
+              </a> */}
             </div>
             <input
               type="text"
@@ -247,14 +247,14 @@ const Home = () => {
                 "JOIN AIRDROP"
               )}
             </button>
-            <div className="referral-count">
+            {/* <div className="referral-count">
               <Link to="/referral/getreferral">View My Referral Link</Link>
               <Link to="/referral/getreferral">View Referal Count</Link>
-            </div>
+            </div> */}
           </div>
         </form>
 
-        {user.referralLink && <ReferralLink user={user} />}
+        {/* {user.referralLink && <ReferralLink user={user} />} */}
 
         <Icons />
       </div>
